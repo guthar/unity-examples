@@ -1,0 +1,69 @@
+# {"id":"ID_59494","idOriginal":"ID_59494","origin":[14.362590420083468,48.25824929348756],"elevation":251.535,"wof":[{"Id":85681677,"Name":"Oberösterreich","Placetype":"region","Offset":-1},{"Id":85898441,"Name":"Posch","Placetype":"neighbourhood","Offset":-1},{"Id":102049853,"Name":"Linz","Placetype":"county","Offset":-1},{"Id":85632785,"Name":"Austria","Placetype":"country","Offset":-1},{"Id":101748071,"Name":"Linz","Placetype":"locality","Offset":-1}]}
+
+# Attribution: City of Linz <http://geo.data.linz.gv.at/katalog/geodata/3d_geo_daten_lod2/>
+# Longitude: 14.362590420083468
+# Latitude: 48.25824929348756
+# Elevation: 251.535
+
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.0)
+
+
+# 12 vertex positions
+v  3.033 9.358 0.931
+v  0 9.358 5.73012e-16
+v  2.432 9.358 1.764
+v  2.805 9.358 0.767
+v  0.597 9.358 -0.827
+v  0.827 9.358 -0.661
+v  0.597 5.06391e-17 -0.827
+v  0 0 0
+v  2.432 -1.08014e-16 1.764
+v  3.033 -5.70073e-17 0.931
+v  2.805 -4.69652e-17 0.767
+v  0.827 4.04746e-17 -0.661
+
+# 0 UV coordinates
+
+# 16 vertex normals
+vn 0 1 0
+vn -0.810809 0 -0.585312
+vn -0.810809 3.584e-17 -0.585312
+vn -0.587142 -4.95666e-17 0.809484
+vn -0.587142 0 0.809484
+vn 0.810961 -0 0.5851
+vn 0.58393 0 -0.811804
+vn 0.585341 5.22087e-05 -0.810787
+vn 0.585233 1.35517e-05 -0.810865
+vn 0.58393 -0.000502102 -0.811804
+vn 0.58533 0 -0.810795
+vn -1.79822e-20 1 6.12475e-17
+vn 0 -1 -6.12323e-17
+vn 4.73361e-24 -1 -6.12323e-17
+vn -1.14692e-23 -1 -6.12323e-17
+vn 1.43811e-19 -1 -6.14074e-17
+
+# Mesh 'defaultobject' with 20 faces
+g defaultobject
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  2//1 1//1 4//1
+f  2//1 4//1 5//1
+f  5//1 4//1 6//1
+f  7//2 2//2 5//2
+f  2//2 7//2 8//3
+f  8//4 3//4 2//4
+f  3//4 8//4 9//5
+f  9//6 1//6 3//6
+f  1//6 9//6 10//6
+f  10//7 4//7 1//7
+f  4//8 10//8 6//8
+f  6//9 10//9 5//9
+f  5//10 10//10 11//10
+f  5//11 11//11 7//11
+f  7//12 11//12 12//12
+f  7//13 9//13 8//13
+f  9//13 7//13 11//14
+f  9//13 11//14 10//15
+f  11//14 7//13 12//16
+

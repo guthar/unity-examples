@@ -1,0 +1,62 @@
+# {"id":"_49155","idOriginal":"_49155","origin":[14.289723901829424,48.30740995417496],"elevation":255.942,"wof":[{"Id":102049853,"Name":"Linz","Placetype":"county","Offset":-1},{"Id":85632785,"Name":"Austria","Placetype":"country","Offset":-1},{"Id":85898449,"Name":"Steeg","Placetype":"neighbourhood","Offset":-1},{"Id":85681677,"Name":"Oberösterreich","Placetype":"region","Offset":-1},{"Id":101748071,"Name":"Linz","Placetype":"locality","Offset":-1}]}
+
+# Attribution: City of Linz <http://geo.data.linz.gv.at/katalog/geodata/3d_geo_daten_lod2/>
+# Longitude: 14.289723901829424
+# Latitude: 48.30740995417496
+# Elevation: 255.942
+
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.0)
+
+
+# 10 vertex positions
+v  0 12.777 7.82366e-16
+v  4.551 12.217 1.661
+v  3.352 12.214 -1.263
+v  1.672 12.777 4.017
+v  3.987 12.385 3.084
+v  3.987 -1.88841e-16 3.084
+v  4.551 -1.01707e-16 1.661
+v  3.352 7.73364e-17 -1.263
+v  0 0 0
+v  1.672 -2.4597e-16 4.017
+
+# 0 UV coordinates
+
+# 15 vertex normals
+vn 0.143385 0.987858 -0.0598092
+vn 0.143332 0.987875 -0.0596593
+vn 0.143139 0.987888 -0.059898
+vn 0.929644 -0 0.36846
+vn 0.929643 0 0.36846
+vn 0.925234 0 -0.379397
+vn 0.925234 0 -0.379397
+vn -0.352592 0 -0.935777
+vn -0.352592 0 -0.935777
+vn -0.92322 -2.35299e-17 0.384273
+vn -0.92322 0 0.384273
+vn 0.373807 -0 0.927506
+vn -2.33923e-24 -1 -6.12323e-17
+vn -7.14157e-24 -1 -6.12323e-17
+vn 0 -1 -6.12323e-17
+
+# Mesh 'defaultobject' with 16 faces
+g defaultobject
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  2//2 1//2 4//2
+f  2//3 4//3 5//3
+f  6//4 2//4 5//4
+f  2//4 6//4 7//5
+f  7//6 3//6 2//6
+f  3//6 7//6 8//7
+f  3//8 9//8 1//8
+f  9//8 3//8 8//9
+f  9//10 4//10 1//10
+f  4//10 9//10 10//11
+f  10//12 5//12 4//12
+f  5//12 10//12 6//12
+f  7//13 9//13 8//13
+f  9//13 7//13 6//14
+f  9//13 6//14 10//15
+

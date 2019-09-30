@@ -1,0 +1,69 @@
+# {"id":"ID_42536","idOriginal":"ID_42536","origin":[14.284661205647073,48.30969645148214],"elevation":255.134,"wof":[{"Id":102049853,"Name":"Linz","Placetype":"county","Offset":-1},{"Id":85632785,"Name":"Austria","Placetype":"country","Offset":-1},{"Id":85681677,"Name":"Oberösterreich","Placetype":"region","Offset":-1},{"Id":85898449,"Name":"Steeg","Placetype":"neighbourhood","Offset":-1},{"Id":101748071,"Name":"Linz","Placetype":"locality","Offset":-1}]}
+
+# Attribution: City of Linz <http://geo.data.linz.gv.at/katalog/geodata/3d_geo_daten_lod2/>
+# Longitude: 14.284661205647073
+# Latitude: 48.30969645148214
+# Elevation: 255.134
+
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.0)
+
+
+# 12 vertex positions
+v  0.26 2.445 0.194
+v  35.65 2.445 -39.155
+v  0 2.445 1.49713e-16
+v  0.774 2.445 -0.372
+v  2.167 2.445 -1.907
+v  36.123 2.445 -38.738
+v  36.123 2.37202e-15 -38.738
+v  35.65 2.39755e-15 -39.155
+v  0 0 0
+v  0.26 -1.18791e-17 0.194
+v  0.774 2.27784e-17 -0.372
+v  2.167 1.1677e-16 -1.907
+
+# 0 UV coordinates
+
+# 16 vertex normals
+vn 0 1 0
+vn 0.661307 0 -0.750115
+vn -0.739427 0 -0.673237
+vn -0.739427 4.12239e-17 -0.673237
+vn -0.598025 -4.90763e-17 0.801477
+vn -0.598025 0 0.801477
+vn 0.740295 -0 0.672282
+vn 0.740529 -0.000108916 0.672024
+vn 0.740295 0.000295257 0.672282
+vn 0.735203 0.00666919 0.677814
+vn 0.731096 -0.159107 0.663463
+vn 0.73522 0 0.677829
+vn 0 -1 -6.12322e-17
+vn 5.4396e-22 -1 -6.12314e-17
+vn 0 -1 -6.12319e-17
+vn 0 -1 -6.12322e-17
+
+# Mesh 'defaultobject' with 20 faces
+g defaultobject
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  2//1 1//1 4//1
+f  2//1 4//1 5//1
+f  2//1 5//1 6//1
+f  7//2 2//2 6//2
+f  2//2 7//2 8//2
+f  8//3 3//3 2//3
+f  3//3 8//3 9//4
+f  9//5 1//5 3//5
+f  1//5 9//5 10//6
+f  10//7 4//7 1//7
+f  4//8 10//8 5//8
+f  5//9 10//9 11//9
+f  5//10 11//10 6//10
+f  6//11 11//11 12//11
+f  6//12 12//12 7//12
+f  8//13 10//13 9//13
+f  10//13 8//13 11//14
+f  11//14 8//13 12//15
+f  12//15 8//13 7//16
+

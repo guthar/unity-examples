@@ -1,0 +1,69 @@
+# {"id":"ID_58004","idOriginal":"ID_58004","origin":[14.285831317726846,48.30235866726416],"elevation":264.009,"wof":[{"Id":102049853,"Name":"Linz","Placetype":"county","Offset":-1},{"Id":101748071,"Name":"Linz","Placetype":"locality","Offset":-1},{"Id":85681677,"Name":"Oberösterreich","Placetype":"region","Offset":-1},{"Id":85898449,"Name":"Steeg","Placetype":"neighbourhood","Offset":-1},{"Id":85632785,"Name":"Austria","Placetype":"country","Offset":-1}]}
+
+# Attribution: City of Linz <http://geo.data.linz.gv.at/katalog/geodata/3d_geo_daten_lod2/>
+# Longitude: 14.285831317726846
+# Latitude: 48.30235866726416
+# Elevation: 264.009
+
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.0)
+
+
+# 12 vertex positions
+v  0 18.847 1.15405e-15
+v  3.148 18.847 0.198
+v  2.224 18.847 -1.312
+v  1.849 18.847 1.055
+v  1.029 18.847 1.596
+v  0.667 18.847 1.035
+v  3.148 -1.2124e-17 0.198
+v  2.224 8.03368e-17 -1.312
+v  0 0 0
+v  1.029 -9.77268e-17 1.596
+v  0.667 -6.33755e-17 1.035
+v  1.849 -6.46001e-17 1.055
+
+# 0 UV coordinates
+
+# 16 vertex normals
+vn -0 1 0
+vn 0.852974 0 -0.521953
+vn -0.508103 0 -0.861296
+vn -0.508103 5.27392e-17 -0.861296
+vn -0.840571 -3.31696e-17 0.541701
+vn -0.840253 -3.8387e-05 0.542195
+vn -0.840459 0 0.541875
+vn -2.05495e-20 1 6.12445e-17
+vn 0.55069 0 0.83471
+vn 0.5507 1.0366e-06 0.834703
+vn 0.55069 -6.54365e-07 0.83471
+vn 0.5507 0 0.834703
+vn 0 -1 -6.12323e-17
+vn 5.59844e-25 -1 -6.12323e-17
+vn -7.0949e-24 -1 -6.12323e-17
+vn 1.36997e-20 -1 -6.12376e-17
+
+# Mesh 'defaultobject' with 20 faces
+g defaultobject
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  2//1 1//1 4//1
+f  4//1 1//1 5//1
+f  5//1 1//1 6//1
+f  7//2 3//2 2//2
+f  3//2 7//2 8//2
+f  8//3 1//3 3//3
+f  1//3 8//3 9//4
+f  9//5 6//5 1//5
+f  6//6 9//6 5//6
+f  5//7 9//7 10//7
+f  10//8 9//8 11//8
+f  4//9 7//9 2//9
+f  7//10 4//10 5//10
+f  7//9 5//11 12//11
+f  12//12 5//10 10//12
+f  7//13 9//13 8//13
+f  9//13 7//13 12//14
+f  9//13 12//14 10//15
+f  9//13 10//15 11//16
+

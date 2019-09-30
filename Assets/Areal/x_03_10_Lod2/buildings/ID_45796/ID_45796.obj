@@ -1,0 +1,69 @@
+# {"id":"ID_45796","idOriginal":"ID_45796","origin":[14.284008580814136,48.303143217788794],"elevation":266.597,"wof":[{"Id":101748071,"Name":"Linz","Placetype":"locality","Offset":-1},{"Id":85681677,"Name":"Oberösterreich","Placetype":"region","Offset":-1},{"Id":85898449,"Name":"Steeg","Placetype":"neighbourhood","Offset":-1},{"Id":85632785,"Name":"Austria","Placetype":"country","Offset":-1},{"Id":102049853,"Name":"Linz","Placetype":"county","Offset":-1}]}
+
+# Attribution: City of Linz <http://geo.data.linz.gv.at/katalog/geodata/3d_geo_daten_lod2/>
+# Longitude: 14.284008580814136
+# Latitude: 48.303143217788794
+# Elevation: 266.597
+
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.0)
+
+
+# 12 vertex positions
+v  2.339 4.073 -1.673
+v  3.137 4.073 -0.52
+v  2.377 4.073 -1.7
+v  0 4.073 2.49399e-16
+v  3.854 4.073 5.567
+v  6.041 4.073 3.991
+v  2.377 1.04095e-16 -1.7
+v  0 0 0
+v  2.339 1.02442e-16 -1.673
+v  3.854 -3.4088e-16 5.567
+v  6.041 -2.44378e-16 3.991
+v  3.137 3.18408e-17 -0.52
+
+# 0 UV coordinates
+
+# 16 vertex normals
+vn -0 1 0
+vn -0.579207 0 -0.81518
+vn -0.581764 -3.59449e-05 -0.813357
+vn -0.581724 4.98056e-17 -0.813386
+vn 0 1 6.1232e-17
+vn -0.822197 -3.48536e-17 0.569202
+vn -0.822197 0 0.569202
+vn 0.584637 -0 0.811295
+vn 0.840715 0 -0.541478
+vn 0.840833 -7.50455e-05 -0.541294
+vn 0.840715 0.00028685 -0.541478
+vn 0.840833 0 -0.541295
+vn -1.01246e-22 -1 -6.12324e-17
+vn 0 -1 -6.12323e-17
+vn 0 -1 -6.12323e-17
+vn 3.6656e-24 -1 -6.12323e-17
+
+# Mesh 'defaultobject' with 20 faces
+g defaultobject
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  2//1 1//1 4//1
+f  2//1 4//1 5//1
+f  2//1 5//1 6//1
+f  7//2 1//2 3//2
+f  1//3 7//3 4//3
+f  4//4 7//4 8//4
+f  8//5 7//5 9//5
+f  8//6 5//6 4//6
+f  5//6 8//6 10//7
+f  10//8 6//8 5//8
+f  6//8 10//8 11//8
+f  2//9 7//9 3//9
+f  7//10 2//10 6//10
+f  7//11 6//11 12//11
+f  12//12 6//12 11//12
+f  12//13 9//13 7//13
+f  9//13 12//13 8//14
+f  8//14 12//13 10//15
+f  10//15 12//13 11//16
+

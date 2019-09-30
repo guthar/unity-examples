@@ -1,0 +1,70 @@
+# {"id":"_45295","idOriginal":"_45295","origin":[14.287372761041283,48.301300161361326],"elevation":263.864,"wof":[{"Id":85898449,"Name":"Steeg","Placetype":"neighbourhood","Offset":-1},{"Id":85681677,"Name":"Oberösterreich","Placetype":"region","Offset":-1},{"Id":85898459,"Name":"Wegscheid","Placetype":"neighbourhood","Offset":-1},{"Id":102049853,"Name":"Linz","Placetype":"county","Offset":-1},{"Id":101748071,"Name":"Linz","Placetype":"locality","Offset":-1},{"Id":85632785,"Name":"Austria","Placetype":"country","Offset":-1}]}
+
+# Attribution: City of Linz <http://geo.data.linz.gv.at/katalog/geodata/3d_geo_daten_lod2/>
+# Longitude: 14.287372761041283
+# Latitude: 48.301300161361326
+# Elevation: 263.864
+
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.0)
+
+
+# 12 vertex positions
+v  3.591 6.515 -1.316
+v  4.995 5.468 2.567
+v  3.854 6.486 -1.29
+v  4.178 5.212 3.945
+v  0 6.515 3.98929e-16
+v  1.515 5.248 4.768
+v  3.591 8.05818e-17 -1.316
+v  3.854 7.89897e-17 -1.29
+v  0 0 0
+v  1.515 -2.91956e-16 4.768
+v  4.178 -2.41562e-16 3.945
+v  4.995 -1.57183e-16 2.567
+
+# 0 UV coordinates
+
+# 17 vertex normals
+vn 0.0840487 0.969323 0.230975
+vn 0.0851657 0.969321 0.230571
+vn 0.0845271 0.969358 0.230651
+vn 0.0844203 0.969342 0.230759
+vn 0.0983798 0 -0.995149
+vn -0.344093 0 -0.938935
+vn -0.344093 5.74932e-17 -0.938935
+vn -0.953046 -1.85426e-17 0.302824
+vn -0.953047 0 0.302824
+vn 0.295271 -0 0.955414
+vn 0.295271 0 0.955414
+vn 0.86018 0 0.509991
+vn 0.958921 0 -0.283673
+vn 0.958921 0 -0.283673
+vn 1.22343e-23 -1 -6.12323e-17
+vn 0 -1 -6.12323e-17
+vn 2.20786e-24 -1 -6.12323e-17
+
+# Mesh 'defaultobject' with 20 faces
+g defaultobject
+usemtl DefaultMaterial
+f  1//1 2//1 3//1
+f  2//2 1//2 4//2
+f  4//3 1//3 5//3
+f  4//4 5//4 6//4
+f  3//5 7//5 1//5
+f  7//5 3//5 8//5
+f  7//6 5//6 1//6
+f  5//6 7//6 9//7
+f  9//8 6//8 5//8
+f  6//8 9//8 10//9
+f  10//10 4//10 6//10
+f  4//10 10//10 11//11
+f  4//12 12//12 2//12
+f  12//12 4//12 11//12
+f  2//13 8//13 3//13
+f  8//13 2//13 12//14
+f  8//15 9//15 7//15
+f  9//15 8//15 12//16
+f  9//15 12//16 10//16
+f  10//16 12//16 11//17
+
