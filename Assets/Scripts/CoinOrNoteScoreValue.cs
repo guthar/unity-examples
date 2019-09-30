@@ -14,7 +14,7 @@ public class CoinOrNoteScoreValue : MonoBehaviour
     {
         get
         {
-            int result = (int)(gameObject.transform.position.y * scoreFactor);
+            int result = Mathf.Abs((int)(gameObject.transform.position.y * scoreFactor));
             return result;
         }
     }

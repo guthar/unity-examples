@@ -8,17 +8,32 @@ public class ScoreManager : MonoBehaviour
     public int score = 0;
 
     /// <summary>
+    /// Geldausgabe.
+    /// </summary>
+    public Bankomat bankomat;
+
+    /// <summary>
     /// Gibt den Punktewert des Geldobjekts auf Basis der Höhe zurück.
     /// </summary>
     /// <param name="collectedGameObject"></param>
     public void Collect(GameObject collectedGameObject)
     {
+        Debug.Log(
+            "[ScoreManager.Collect] " + collectedGameObject.name,
+            this);
+
         // Sammelton abspielen
-        AudioSource audioSourceComponent =
-            collectedGameObject.GetComponent<AudioSource>();
-        if (audioSourceComponent != null)
+        CoinOrNoteAudioClip audioClipComponent =
+            collectedGameObject.GetComponent<CoinOrNoteAudioClip>();
+        if (audioClipComponent != null)
         {
-            audioSourceComponent.Play();
+            Debug.Log(
+                "[ScoreManager.Collect] Coin Or Note Audio Clip Component " + audioClipComponent.name,
+                audioClipComponent);
+            if (audioClipComponent.collectAudioClip != null)
+            {
+                AudioSource.PlayClipAtPoint(audioClipComponent.collectAudioClip, collectedGameObject.transform.position);
+            }
         }
 
         // benötigte Komponente vom GameObject holen
@@ -26,7 +41,27 @@ public class ScoreManager : MonoBehaviour
             collectedGameObject.GetComponent<CoinOrNoteScoreValue>();
         if (coinOrNoteScoreValueComponent != null)
         {
+            Debug.Log(
+                "[ScoreManager.Collect] Coin Or Note Score Value Component " + coinOrNoteScoreValueComponent.name,
+                coinOrNoteScoreValueComponent);
             score += coinOrNoteScoreValueComponent.ScoreValue;
+        }
+
+        Debug.Log(
+            "[ScoreManager.Collect] Score = " + score.ToString(),
+            this);
+
+        // gesammeltes Geld markieren
+        if (bankomat != null)
+        {
+            bankomat.OnCollected(collectedGameObject);
+        }
+
+        // Objekt zerstören
+        if (coinOrNoteScoreValueComponent != null)
+        {
+            collectedGameObject.SetActive(false);
+            UnityEngine.Object.Destroy(collectedGameObject);
         }
     }
 
