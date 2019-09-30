@@ -12,9 +12,7 @@ namespace Icaros.Mobile.Player {
         public GameObject Vehicle;
 
         //Current Movementspeed
-        public float MoveSpeed = 0f;
-        //Acceleration per Tick
-        public float Acceleration = 5f;
+        public float MoveSpeed = 70f;
 
         //Multiplies the calculation result for rolls (z-axis rotation)
         public float RollRotationFactor = 2f;
@@ -23,7 +21,6 @@ namespace Icaros.Mobile.Player {
 
         private IInputDevice myController = null;
         private Rigidbody rb;
-        private CharacterController cc;
         private float currentZ = 0f;
 
         private Transform camToFollow = null;
@@ -59,7 +56,6 @@ namespace Icaros.Mobile.Player {
 
         void Start() {
             rb = GetComponent<Rigidbody>();
-            cc = GetComponent<CharacterController>();
             PlayerManager.Instance.registerPlayer(this);
         }
 
@@ -81,13 +77,14 @@ namespace Icaros.Mobile.Player {
 
             Vector3 euler = transform.localEulerAngles;
 
-            if (MoveSpeed < 0)
+            if (MoveSpeed < 0) {
                 euler.y += -currentZ * -RollRotationFactor * Time.deltaTime;
-            else
+            }
+            else {
                 euler.y += currentZ * -RollRotationFactor * Time.deltaTime;
+            }
 
             transform.localEulerAngles = euler;
-            //cc.Move(transform.forward * MoveSpeed * Time.deltaTime);
 
             updateBody();
         }
@@ -99,7 +96,7 @@ namespace Icaros.Mobile.Player {
                     rb.useGravity = false;
                     rb.drag = 0.7f;
 
-                    rb.AddForce(transform.forward * MoveSpeed);
+                    rb.AddForce(transform.forward * MoveSpeed * 80 * Time.deltaTime);
                 }
                 // Über Wasser
                 else {
