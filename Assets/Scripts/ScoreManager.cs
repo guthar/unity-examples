@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     public Bankomat bankomat;
 
+    private bool isWeltspartag = false;
+
     /// <summary>
     /// Gibt den Punktewert des Geldobjekts auf Basis der Höhe zurück.
     /// </summary>
@@ -44,7 +46,14 @@ public class ScoreManager : MonoBehaviour
             Debug.Log(
                 "[ScoreManager.Collect] Coin Or Note Score Value Component " + coinOrNoteScoreValueComponent.name,
                 coinOrNoteScoreValueComponent);
-            score += coinOrNoteScoreValueComponent.ScoreValue;
+            score += (coinOrNoteScoreValueComponent.ScoreValue * (isWeltspartag ? 2 : 1));
+
+            if (isWeltspartag)
+            {
+                Debug.Log(
+                    "[ScoreManager.Collect] Weltspartag = " + isWeltspartag.ToString(),
+                    this);
+            }
         }
 
         Debug.Log(
@@ -65,4 +74,8 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void SetWeltspartag(bool isWeltspartag)
+    {
+        this.isWeltspartag = isWeltspartag;
+    }
 }
