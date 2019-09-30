@@ -1,0 +1,16 @@
+LANGUAGE_ID;EN;DE
+PLAY;Play;Spielen
+BACK;Back;Zurück
+OPTIONS;Options;Optionen
+LANGUAGES;Languages;Sprachen
+LANG_EN;English;Englisch
+LANG_DE;German;Deutsch
+WARNING_TEXT;<color=#FF6600><b>WARNING/// </b></color> Serious injury can occur on this equipment. Read the user manual and follow the trainer's instructions.;<color=#FF6600><b>WARNUNG/// </b></color> Auf diesem Gerät können ernsthafte Verletzungen entstehen. Lesen Sie die Bedienungsanleitung und befolgen Sie die Anweisungen des Personals.
+START;START;STARTEN
+CONTROLLER_SELECT_INSTRUCTION;Tap the touchpad on the right side of the headset to select controller;Klicken Sie auf das Touchpad an der rechten Seite der VR-Brille um einen Controller auszuwählen
+CONTROLLER_CONNECTING_TEXT;Please wait for the device to connect;Bitte warten Sie während die Verbindung aufgebaut wird
+HEAD_CALIBRATION_TEXT;Look straight forward and press select to start;Schauen Sie geradeaus und drücken Sie Auswahl zum starten
+MOUNT_UP_TEXT;Keep weight back. Grab handles. Press any key.;Schwerpunkt zurück. Griffe anfassen. Beliebige Taste drücken.
+RECONNECT_CONTROLLER;Connection to the Controller lost. Trying to reconnect.;Verbindung zum Controller verloren. Versuche die Verbindung wiederherzustellen.
+CONTROLLER_CONNECTION_LOST;Controller connection failed. Please select a new controller.;Verbindung fehlgeschlagen. Bitte wählen Sie erneut einen Controller.
+NO_BLUETOOTH;Please enable Bluetooth and restart the Game!;Bitte aktivieren Sie Bluetooth und starten Sie anschließend das Spiel neu!

@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1636292401381798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4370657379134310}
+  - component: {fileID: 114271101250012592}
+  m_Layer: 0
+  m_Name: LocalizationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4370657379134310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636292401381798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114271101250012592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636292401381798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbaa95ff658336c4b810594b4306cbcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizationFileNames:
+  - Localization.csv
+  defaultLanguage: EN
+  Languages:
+  - id: EN
+    tokens:
+    - key: LANGUAGE_ID
+      value: EN
+    - key: PLAY
+      value: Play
+    - key: BACK
+      value: Back
+    - key: OPTIONS
+      value: Options
+    - key: LANGUAGES
+      value: Languages
+    - key: LANG_EN
+      value: English
+    - key: LANG_DE
+      value: German
+    - key: WARNING_TEXT
+      value: <color=#FF6600><b>WARNING/// </b></color> Serious injury can occur on
+        this equipment. Read the user manual and follow the trainer's instructions.
+    - key: START
+      value: START
+    - key: CONTROLLER_SELECT_INSTRUCTION
+      value: Tap the touchpad on the right side of the headset to select controller
+    - key: CONTROLLER_CONNECTING_TEXT
+      value: Please wait for the device to connect
+    - key: HEAD_CALIBRATION_TEXT
+      value: Look straight forward and press select to start
+    - key: MOUNT_UP_TEXT
+      value: Keep weight back. Grab handles. Press any key.
+    - key: RECONNECT_CONTROLLER
+      value: Connection to the Controller lost. Trying to reconnect.
+    - key: CONTROLLER_CONNECTION_LOST
+      value: Controller connection failed. Please select a new controller.
+    - key: NO_BLUETOOTH
+      value: Please enable Bluetooth and restart the Game!
+  - id: DE
+    tokens:
+    - key: LANGUAGE_ID
+      value: DE
+    - key: PLAY
+      value: Spielen
+    - key: BACK
+      value: "Zur\xFCck"
+    - key: OPTIONS
+      value: Optionen
+    - key: LANGUAGES
+      value: Sprachen
+    - key: LANG_EN
+      value: Englisch
+    - key: LANG_DE
+      value: Deutsch
+    - key: WARNING_TEXT
+      value: "<color=#FF6600><b>WARNUNG/// </b></color> Auf diesem Ger\xE4t k\xF6nnen
+        ernsthafte Verletzungen entstehen. Lesen Sie die Bedienungsanleitung und befolgen
+        Sie die Anweisungen des Personals."
+    - key: START
+      value: STARTEN
+    - key: CONTROLLER_SELECT_INSTRUCTION
+      value: "Klicken Sie auf das Touchpad an der rechten Seite der VR-Brille um einen
+        Controller auszuw\xE4hlen"
+    - key: CONTROLLER_CONNECTING_TEXT
+      value: "Bitte warten Sie w\xE4hrend die Verbindung aufgebaut wird"
+    - key: HEAD_CALIBRATION_TEXT
+      value: "Schauen Sie geradeaus und dr\xFCcken Sie Auswahl zum starten"
+    - key: MOUNT_UP_TEXT
+      value: "Schwerpunkt zur\xFCck. Griffe anfassen. Beliebige Taste dr\xFCcken."
+    - key: RECONNECT_CONTROLLER
+      value: Verbindung zum Controller verloren. Versuche die Verbindung wiederherzustellen.
+    - key: CONTROLLER_CONNECTION_LOST
+      value: "Verbindung fehlgeschlagen. Bitte w\xE4hlen Sie erneut einen Controller."
+    - key: NO_BLUETOOTH
+      value: "Bitte aktivieren Sie Bluetooth und starten Sie anschlie\xDFend das Spiel
+        neu!"
+  currentLanguage:
+    id: EN
+    tokens:
+    - key: LANGUAGE_ID
+      value: EN
+    - key: PLAY
+      value: Play
+    - key: BACK
+      value: Back
+    - key: OPTIONS
+      value: Options
+    - key: LANGUAGES
+      value: Languages
+    - key: LANG_EN
+      value: English
+    - key: LANG_DE
+      value: German
+    - key: WARNING_TEXT
+      value: <color=#FF6600><b>WARNING/// </b></color> Serious injury can occur on
+        this equipment. Read the user manual and follow the trainer's instructions.
+    - key: START
+      value: START
+    - key: CONTROLLER_SELECT_INSTRUCTION
+      value: Tap the touchpad on the right side of the headset to select controller
+    - key: CONTROLLER_CONNECTING_TEXT
+      value: Please wait for the device to connect
+    - key: HEAD_CALIBRATION_TEXT
+      value: Look straight forward and press select to start
+    - key: MOUNT_UP_TEXT
+      value: Keep weight back. Grab handles. Press any key.
+    - key: RECONNECT_CONTROLLER
+      value: Connection to the Controller lost. Trying to reconnect.
+    - key: CONTROLLER_CONNECTION_LOST
+      value: Controller connection failed. Please select a new controller.
+    - key: NO_BLUETOOTH
+      value: Please enable Bluetooth and restart the Game!
