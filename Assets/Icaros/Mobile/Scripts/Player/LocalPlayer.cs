@@ -20,22 +20,27 @@ namespace Icaros.Mobile.Player {
         public float RollRotationFactor = 2f;
         //Multiplies the calculation result for pitch (x-axis rotation) 
         public float PitchRotationFactor = 1.5f;
-        
+
         private IInputDevice myController = null;
+        private Rigidbody rb;
         private CharacterController cc;
         private float currentZ = 0f;
 
         private Transform camToFollow = null;
-        
+
+        private bool ready = false;
+
         public void linkController(IInputDevice device) {
             if (!isLocalPlayer)
                 return;
 
             myController = device;
-            device.SecondButtonPressed += speedUp;
-            device.ThirdButtonPressed += slowDown;
+            //device.SecondButtonPressed += speedUp;
+            //device.ThirdButtonPressed += slowDown;
             device.xAxisRotated += rotateX;
             device.zAxisRotated += rotateZ;
+
+            ready = true;
         }
 
         public void recalibrate() {
@@ -53,16 +58,9 @@ namespace Icaros.Mobile.Player {
         }
 
         void Start() {
+            rb = GetComponent<Rigidbody>();
             cc = GetComponent<CharacterController>();
             PlayerManager.Instance.registerPlayer(this);
-        }
-
-        void speedUp() {
-            MoveSpeed += Acceleration;
-        }
-
-        void slowDown() {
-            MoveSpeed -= Acceleration;
         }
 
         void rotateX(float x) {
@@ -75,28 +73,46 @@ namespace Icaros.Mobile.Player {
             Vehicle.transform.localEulerAngles = new Vector3(0, 0, z);
             currentZ = z;
         }
-        
+
         void Update() {
             if (!isLocalPlayer)
                 return;
 
+
             Vector3 euler = transform.localEulerAngles;
-            
+
             if (MoveSpeed < 0)
                 euler.y += -currentZ * -RollRotationFactor * Time.deltaTime;
             else
                 euler.y += currentZ * -RollRotationFactor * Time.deltaTime;
 
             transform.localEulerAngles = euler;
-            cc.Move(transform.forward * MoveSpeed * Time.deltaTime);
+            //cc.Move(transform.forward * MoveSpeed * Time.deltaTime);
 
             updateBody();
+        }
+
+        private void FixedUpdate() {
+            if (ready) {
+                // Unter Wasser
+                if (transform.position.y < 20f) {
+                    rb.useGravity = false;
+                    rb.drag = 0.7f;
+
+                    rb.AddForce(transform.forward * MoveSpeed);
+                }
+                // Über Wasser
+                else {
+                    rb.useGravity = true;
+                    rb.drag = 0f;
+                }
+            }
         }
 
         void updateBody() {
             if (camToFollow == null) {
                 Camera[] cams = GetComponentsInChildren<Camera>();
-                foreach(Camera c in cams) {
+                foreach (Camera c in cams) {
                     if (c.CompareTag("MainCamera")) {
                         camToFollow = c.transform;
                     }
@@ -109,7 +125,8 @@ namespace Icaros.Mobile.Player {
                 Head.transform.localRotation = camToFollow.localRotation;
                 Head.transform.localPosition = camToFollow.localPosition;
                 Vehicle.transform.position = camToFollow.transform.position;
-            }catch (Exception e) {
+            }
+            catch (Exception e) {
                 camToFollow = null;
             }
 
