@@ -9,6 +9,7 @@ Man sieht die Figur eigentlich nicht, blickt man jedoch zurück, sieht man die S
 
 Man schwimmt unter Wasser in Linz rund um die Landstraße zwischen Volksgarten und Hauptplatz bzw. teilweise auch durch Hinterhöfe und Plätze.
 Generell wird am Himmel immer die Sonne angezeigt, ggf. kann die Landschaft über Wasser der aktuellen Jahreszeit angepasst werden, wobei die Sunne immer sichtbar sein muss.
+Auf der Landstraße wird die neue, moderne Bankfiliale dargestellt, zu der man das gesammelte Geld bringen muss.
 
 ## Spielverlauf
 
@@ -34,6 +35,8 @@ Punkte können durch folgende Aktionen erreicht werden:
 * Einsammeln von Geld (unter bzw. über Wasser)
 * Bringen des eingesammelten Geldes zur Bank (Zinsen)
 * Bringen des eingesammelten Geldes zur Bank am Weltspartag (zusätzliche Zinsen)
+
+Die aktuelle Punkteanzahl wird an mehreren Stellen in der Stadt auf Displays angezeigt (z.B. Passage).
 
 ## Besonderheiten
 
