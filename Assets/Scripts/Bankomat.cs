@@ -59,12 +59,13 @@ public class Bankomat : MonoBehaviour
 
                 // Instanzierung
                 spawnedScoreObjects[spawnIndex] = GameObject.Instantiate<GameObject>(spawnItemGameObject, spawnPositions[spawnIndex]);
+            }
 
-                spawnIndex++;
-                if (spawnIndex >= spawnPositions.Length)
-                {
-                    spawnIndex = 0;
-                }
+            // Index weiterzählen
+            spawnIndex++;
+            if (spawnIndex >= spawnPositions.Length)
+            {
+                spawnIndex = 0;
             }
 
             lastSpawnTime = DateTime.Now;
@@ -84,7 +85,11 @@ public class Bankomat : MonoBehaviour
     {
         for (int index = 0; index < spawnedScoreObjects.Length; index++)
         {
-            spawnedScoreObjects[index] = null;
+            if (System.Object.Equals(spawnedScoreObjects[index], spawnedScoreObject))
+            {
+                spawnedScoreObjects[index] = null;
+                break;
+            }
         }
     }
 }
