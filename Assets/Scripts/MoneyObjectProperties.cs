@@ -15,8 +15,8 @@ public class MoneyObjectProperties : MonoBehaviour
     /// Gewicht des Geldobjekts.
     /// </summary>
     [Tooltip("Gewicht des Geldobjekts.")]
-    [Range(0f, 10f)]
-    public float weight = 10;
+    [Range(0f, 1f)]
+    public float weight = 0.1f;
 
     /// <summary>
     /// Audio Clip, der beim Einsammeln abgespielt wird.

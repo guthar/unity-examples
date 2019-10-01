@@ -60,6 +60,7 @@ namespace Icaros.Mobile.Player {
 
         void Start() {
             rb = GetComponent<Rigidbody>();
+            rb.mass = minWeight;
             PlayerManager.Instance.registerPlayer(this);
         }
 
@@ -96,17 +97,12 @@ namespace Icaros.Mobile.Player {
         private void FixedUpdate() {
             if (ready) {
                 // Unter Wasser
-                // TODO: "underWater" verwenden
-                if (transform.position.y < atlentosManager.aquaLevel) {
-                    rb.useGravity = false;
-                    rb.drag = 0.7f;
-
+                if (isUnderWater) {
                     rb.AddForce(transform.forward * MoveSpeed * 80 * Time.deltaTime);
                 }
                 // Über Wasser
                 else {
-                    rb.useGravity = true;
-                    rb.drag = 0f;
+                    // keine Beschleunigung
                 }
             }
         }
@@ -158,19 +154,28 @@ namespace Icaros.Mobile.Player {
         public AudioClip diveAudioClip;
 
         /// <summary>
+        /// Minimales Gewicht des Players.
+        /// </summary>
+        [Tooltip("Minimales Gewicht des Players.")]
+        [Range(0f, 5f)]
+        public float minWeight = 5f;
+
+        /// <summary>
+        /// Maximales Gewicht des Players.
+        /// </summary>
+        [Tooltip("Maximales Gewicht des Players.")]
+        [Range(0f, 10f)]
+        public float maxWeight = 10f;
+
+        /// <summary>
         /// Aktueller Stand der gesammelten Punkte.
         /// </summary>
         private float currentScore = 0f;
 
         /// <summary>
-        /// Aktuelles Gewicht des gesammelten Geldes.
-        /// </summary>
-        private float currentWeight = 0f;
-
-        /// <summary>
         /// Kennzeichen, ob der Spieler unter oder über Wasser ist.
         /// </summary>
-        private bool underWater = true;
+        private bool isUnderWater = true;
 
         /// <summary>
         /// Spielt den Ton zum aus-dem-Wasser-springen ab.
@@ -203,7 +208,7 @@ namespace Icaros.Mobile.Player {
             // bestimmen, welches Objekt den Trigger ausgelöst hat
             if (isWater(other.gameObject))
             {
-                underWater = true;
+                isUnderWater = true;
                 rb.useGravity = false;
                 rb.drag = 0.7f;
 
@@ -230,7 +235,7 @@ namespace Icaros.Mobile.Player {
             // bestimmen, welches Objekt den Trigger ausgelöst hat
             if (isWater(other.gameObject))
             {
-                underWater = false;
+                isUnderWater = false;
                 rb.useGravity = true;
                 rb.drag = 0f;
 
@@ -301,7 +306,7 @@ namespace Icaros.Mobile.Player {
 
                 // Werte übernehmen
                 currentScore += moneyObjectProperties.ScoreValue;
-                currentWeight += moneyObjectProperties.weight;
+                rb.mass = Mathf.Min(maxWeight, rb.mass + moneyObjectProperties.weight);
 
                 // Information an Spielmanagerobjekt übergeben
                 atlentosManager.CollectMoneyObject(moneyObject, moneyObjectProperties);
@@ -318,7 +323,7 @@ namespace Icaros.Mobile.Player {
 
             // gesammeltes Geld und Gewicht zurücksetzen
             currentScore = 0;
-            currentWeight = 0;
+            rb.mass = minWeight;
         }
     }
 }
