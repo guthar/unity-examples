@@ -57,9 +57,13 @@ MonoBehaviour:
   Head: {fileID: 1672121619079694}
   Vehicle: {fileID: 1616280474392556}
   MoveSpeed: 70
-  Acceleration: 5
   RollRotationFactor: 2
   PitchRotationFactor: 1.5
+  atlentosManager: {fileID: 0}
+  jumpAudioClip: {fileID: 8300000, guid: a0b47ce1eafa13642886586021cf9ae9, type: 3}
+  diveAudioClip: {fileID: 8300000, guid: dd76c5a9618326b49babc36943b1a7fe, type: 3}
+  minWeight: 5
+  maxWeight: 10
 --- !u!143 &143282121244400860
 CharacterController:
   m_ObjectHideFlags: 0

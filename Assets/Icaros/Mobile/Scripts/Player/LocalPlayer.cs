@@ -63,6 +63,8 @@ namespace Icaros.Mobile.Player {
         void Start() {
             rb = GetComponent<Rigidbody>();
             rb.mass = minWeight;
+            atlentosManager = FindObjectOfType<AtlentosManager>();
+            //atlentosManager.playerPosition = this.transform;
             PlayerManager.Instance.registerPlayer(this);
         }
 
@@ -141,7 +143,7 @@ namespace Icaros.Mobile.Player {
         /// Instanz des <see cref="AtlentosManager"/>-Spielmanagerobjekts.
         /// </summary>
         [Tooltip("Instanz des Atlentos-Spielmanagerobjekts.")]
-        public AtlentosManager atlentosManager;
+        private AtlentosManager atlentosManager;
 
         /// <summary>
         /// Audio Clip, der das aus-dem-Wasser-springen darstellt.
