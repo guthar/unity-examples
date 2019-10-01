@@ -148,6 +148,11 @@ namespace Icaros.Mobile.UI {
             UIManager.Instance.RegisterUnlistedMenuItem(Id, Title);
         }
 
+        public static void RegisterHighscoreMenuItem(string id, string Title)
+        {
+
+        }
+
         public static void OpenMenu(string Id) {
             UIManager.Instance.OpenMenu(Id);
         }
@@ -156,6 +161,11 @@ namespace Icaros.Mobile.UI {
         }
         public static void OpenOptionsMenu() {
             UIManager.Instance.OpenMenu("ica_options");
+        }
+
+        public static void OpenHighscoreMenu()
+        {
+            UIManager.Instance.OpenHighScoreList();
         }
 
         public static void CloseUI() {
@@ -287,6 +297,9 @@ namespace Icaros.Mobile.UI {
                     break;
                 case "ica_play":
                     PlayPressed();
+                    break;
+                case "ica_highscore":
+                    OpenHighscoreMenu();
                     break;
                 default:
                     if (id.StartsWith("ica_lang_")) {
@@ -436,13 +449,15 @@ namespace Icaros.Mobile.UI {
 
         private void initializeMenuStructure() {
             UIManager.Instance.RegisterMenuItem("ica_play", "PLAY");
-
+            UIManager.Instance.RegisterMenuItem("ica_restart", "RESTART");
+            UIManager.Instance.RegisterMenuItem("ica_highscore", "HIGHSCORE");
             UIManager.Instance.RegisterMenuItem("ica_options", "OPTIONS");
             UIManager.Instance.RegisterMenuItem("ica_languages", "LANGUAGES", "ica_options");
             UIManager.Instance.RegisterMenuItem("backToRoot", "BACK", "ica_options");
             UIManager.Instance.RegisterMenuItem("backToOptions", "BACK", "ica_languages");
 
             AddLanguageToOptions("EN");
+            AddLanguageToOptions("DE");
         }
 
         private void initializeCamera() {
