@@ -59,7 +59,6 @@ MonoBehaviour:
   MoveSpeed: 70
   RollRotationFactor: 2
   PitchRotationFactor: 1.5
-  atlentosManager: {fileID: 0}
   jumpAudioClip: {fileID: 8300000, guid: a0b47ce1eafa13642886586021cf9ae9, type: 3}
   diveAudioClip: {fileID: 8300000, guid: dd76c5a9618326b49babc36943b1a7fe, type: 3}
   minWeight: 5
@@ -204,7 +203,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1616280474392556
 GameObject:
