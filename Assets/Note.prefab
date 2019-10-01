@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 614360411769921175}
   - component: {fileID: 614360411769921172}
   - component: {fileID: 614360411769921173}
-  - component: {fileID: 4298188513422558858}
-  - component: {fileID: 8003688998864799381}
+  - component: {fileID: 3174502679029826611}
   m_Layer: 0
   m_Name: Note
   m_TagString: MoneyObject
@@ -107,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 50
---- !u!114 &4298188513422558858
+--- !u!114 &3174502679029826611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,20 +115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 614360411769921170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ba31e9f61206e04a9b297a0bd18f6df, type: 3}
+  m_Script: {fileID: 11500000, guid: 77f06f5761a7dfa4484e9f8fee936455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreFactor: 500
---- !u!114 &8003688998864799381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 614360411769921170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b795a182558964bb822837a36e5647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  scoreFactor: 100
+  weight: 3
   collectAudioClip: {fileID: 8300000, guid: db0ea09ce1dd4c746a2bce5c5d88eabd, type: 3}
