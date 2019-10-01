@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5053398579022885487}
   m_Layer: 0
   m_Name: wasserhahn
-  m_TagString: Untagged
+  m_TagString: Flood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
