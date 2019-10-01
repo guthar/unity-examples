@@ -102,7 +102,7 @@ namespace Icaros.Mobile.Player {
             if (ready) {
                 // Unter Wasser
                 if (isUnderWater) {
-                    rb.AddForce(transform.forward * MoveSpeed * 80 * Time.deltaTime);
+                    rb.AddForce(transform.forward * MoveSpeed);
                 }
                 // Über Wasser
                 else {
