@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AtlentosManager : MonoBehaviour
-{
+public class AtlentosManager : MonoBehaviour {
     #region Einstellungen: Bank/Weltspartag
     /// <summary>
     /// Audio Clip, der das Einzahlen darstellt.
@@ -126,6 +125,8 @@ public class AtlentosManager : MonoBehaviour
     public AudioClip endAudioClip;
     #endregion
 
+    public AudioSource GlobalAudioSource;
+
     /// <summary>
     /// Kennzeichen, ob das Spiel läuft oder nicht.
     /// </summary>
@@ -142,8 +143,7 @@ public class AtlentosManager : MonoBehaviour
     private bool isWeltspartag = false;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         // Spielstand zurücksetzen
         totalScore = 0f;
 
@@ -154,11 +154,9 @@ public class AtlentosManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // Wasserstand berechnen
-        if ((isFlooding) || (isDraining))
-        {
+        if ((isFlooding) || (isDraining)) {
             updateAquaLevel();
         }
     }
@@ -171,8 +169,7 @@ public class AtlentosManager : MonoBehaviour
     /// <param name="moneyObjectProperties">[in] Informationen zum eingesammelten Geldobjekt.</param>
     public void CollectMoneyObject(
         GameObject moneyObject,
-        MoneyObjectProperties moneyObjectProperties)
-    {
+        MoneyObjectProperties moneyObjectProperties) {
         // Spielstand übernehmen
         totalScore += moneyObjectProperties.ScoreValue;
 
@@ -184,19 +181,16 @@ public class AtlentosManager : MonoBehaviour
     /// Gibt das gesammelte Geld an der Bank ab.
     /// </summary>
     /// <param name="scoreValue">[in] Wert des abzugebenden Geldes.</param>
-    public void AccountMoney(float scoreValue)
-    {
+    public void AccountMoney(float scoreValue) {
         // Einzahlungston abspielen
-        if (scoreValue > 0f)
-        {
+        if (scoreValue > 0f) {
             AudioSource.PlayClipAtPoint(accountAudioClip, gameObject.transform.position);
         }
 
         // Wert übernehmen
         totalScore += scoreValue;
         float interest = scoreValue * accountingInterest;
-        if (isWeltspartag)
-        {
+        if (isWeltspartag) {
             interest += (interest * weltspartagFactor);
         }
         totalScore += interest;
@@ -208,8 +202,7 @@ public class AtlentosManager : MonoBehaviour
     /// <summary>
     /// Lässt den Wasserstand steigen.
     /// </summary>
-    public void Flood()
-    {
+    public void Flood() {
         isFlooding = true;
         isDraining = false;
     }
@@ -217,8 +210,7 @@ public class AtlentosManager : MonoBehaviour
     /// <summary>
     /// Lässt den Wasserstand wieder ablaufen.
     /// </summary>
-    public void Drain()
-    {
+    public void Drain() {
         isFlooding = false;
         isDraining = true;
     }
@@ -226,28 +218,22 @@ public class AtlentosManager : MonoBehaviour
     /// <summary>
     /// Verändert den Wasserspiegel.
     /// </summary>
-    private void updateAquaLevel()
-    {
+    private void updateAquaLevel() {
         float newAquaLevel = aquaLevel;
-        if (isFlooding)
-        {
+        if (isFlooding) {
             newAquaLevel = Mathf.Min(aquaLevel + (floodAndDrainAmount * Time.deltaTime), maxAquaLevel);
-            if (newAquaLevel == maxAquaLevel)
-            {
+            if (newAquaLevel == maxAquaLevel) {
                 isFlooding = false;
             }
         }
-        else if (isDraining)
-        {
+        else if (isDraining) {
             newAquaLevel = Mathf.Max(aquaLevel - (floodAndDrainAmount * Time.deltaTime), minAquaLevel);
-            if (newAquaLevel == minAquaLevel)
-            {
+            if (newAquaLevel == minAquaLevel) {
                 isDraining = false;
             }
         }
 
-        if (aquaLevel != newAquaLevel)
-        {
+        if (aquaLevel != newAquaLevel) {
             aquaLevel = newAquaLevel;
             aqua.transform.position.Set(
                 aqua.transform.position.x,
@@ -264,32 +250,26 @@ public class AtlentosManager : MonoBehaviour
     /// Führt zeitgesteuert das Aktivieren/Deaktivieren des Weltspartages durch.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator weltspartagCoroutine()
-    {
+    private IEnumerator weltspartagCoroutine() {
         // Initialisierung der Weltspartagslogik
         isWeltspartag = false;
         DateTime toggleWeltspartag = getNextWeltspartagStart();
 
-        while (isPlaying)
-        {
+        while (isPlaying) {
             // alle Sekunden die Verarbeitung starten
             yield return new WaitForSeconds(1.0f);
 
             // Zeit auswerten
-            if (isWeltspartag)
-            {
+            if (isWeltspartag) {
                 // wenn der Endezeitpunkt erreicht ist, den Weltspartag beenden
-                if (toggleWeltspartag < DateTime.Now)
-                {
+                if (toggleWeltspartag < DateTime.Now) {
                     setWeltspartag(false);
                     toggleWeltspartag = getNextWeltspartagStart();
                 }
             }
-            else
-            {
+            else {
                 // wenn der Startzeitpunkt erreicht ist, den Weltspartag beginnen
-                if (toggleWeltspartag < DateTime.Now)
-                {
+                if (toggleWeltspartag < DateTime.Now) {
                     setWeltspartag(true);
                     toggleWeltspartag = getCurrentWeltspartagEnd();
                 }
@@ -302,8 +282,7 @@ public class AtlentosManager : MonoBehaviour
     /// innerhalb der definierten Anzahl an Sekunden.
     /// </summary>
     /// <returns>Beginnzeitpunkt des nächsten Weltspartages.</returns>
-    private DateTime getNextWeltspartagStart()
-    {
+    private DateTime getNextWeltspartagStart() {
         // zufällige Anzahl an Sekunden ermitteln und Zeitpunkt berechnen
         DateTime result = getTimeAfterRandomSeconds((float)weltspartagInterval);
         return result;
@@ -314,8 +293,7 @@ public class AtlentosManager : MonoBehaviour
     /// innerhalb der definierten Anzahl an Sekunden.
     /// </summary>
     /// <returns>Endezeitpunkt des aktiven Weltspartages.</returns>
-    private DateTime getCurrentWeltspartagEnd()
-    {
+    private DateTime getCurrentWeltspartagEnd() {
         // zufällige Anzahl an Sekunden ermitteln und Zeitpunkt berechnen
         DateTime result = getTimeAfterRandomSeconds((float)weltspartagDuration);
         return result;
@@ -325,11 +303,9 @@ public class AtlentosManager : MonoBehaviour
     /// Aktiviert bzw. deaktiviert den Weltspartag.
     /// </summary>
     /// <param name="active">[in] Kennzeichen, ob der Weltspartag aktiv ist.</param>
-    void setWeltspartag(bool active)
-    {
+    void setWeltspartag(bool active) {
         isWeltspartag = active;
-        if (sunRaiffeisenLogo != null)
-        {
+        if (sunRaiffeisenLogo != null) {
             sunRaiffeisenLogo.SetActive(active);
         }
     }
@@ -344,24 +320,20 @@ public class AtlentosManager : MonoBehaviour
     /// Führt zeitgesteuert das Anzeigen von Geldobjekten durch.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator moneyObjectsCoroutine()
-    {
+    private IEnumerator moneyObjectsCoroutine() {
         // Initialisierung der Anzeigelogik
         createdMoneyObjects = new GameObject[moneyObjectPositions.Length];
         DateTime nextCreationTime = getNextCreationTime();
 
-        while (isPlaying)
-        {
+        while (isPlaying) {
             // alle Sekunden die Verarbeitung starten
             yield return new WaitForSeconds(1.0f);
 
             // Zeit auswerten
-            if (nextCreationTime < DateTime.Now)
-            {
+            if (nextCreationTime < DateTime.Now) {
                 // freien, zufälligen Index der Position bestimmen
                 int creationIndex = getCreationIndex();
-                if (creationIndex >= 0)
-                {
+                if (creationIndex >= 0) {
                     // zufällig das Geldobjekt bestimmen, das erzeugt werden soll
                     GameObject moneyObjectTemplate = getMoneyObjectTemplate();
 
@@ -384,8 +356,7 @@ public class AtlentosManager : MonoBehaviour
     /// innerhalb der definierten Anzahl an Sekunden.
     /// </summary>
     /// <returns>Beginnzeitpunkt des nächsten Erzeugens.</returns>
-    private DateTime getNextCreationTime()
-    {
+    private DateTime getNextCreationTime() {
         // zufällige Anzahl an Sekunden ermitteln und Zeitpunkt berechnen
         DateTime result = getTimeAfterRandomSeconds((float)moneyObjectCreationInterval);
         return result;
@@ -395,18 +366,15 @@ public class AtlentosManager : MonoBehaviour
     /// Ermittelt den Index, an dem das Geldobjekt erzeugt werden soll.
     /// </summary>
     /// <returns>Index des Objektslots, oder -1 wenn keiner mehr frei ist.</returns>
-    private int getCreationIndex()
-    {
+    private int getCreationIndex() {
         // Schritt 1: 5 zufällige Indexe ermitteln und freie Slots suchen
         int result = -1;
         int retries = 5;
-        while (retries > 0)
-        {
+        while (retries > 0) {
             // zufälligen Index ermitteln
             int randomIndex =
                 (int)(UnityEngine.Random.value * ((float)moneyObjectPositions.Length));
-            if (createdMoneyObjects[randomIndex] == null)
-            {
+            if (createdMoneyObjects[randomIndex] == null) {
                 result = randomIndex;
                 break;
             }
@@ -416,12 +384,9 @@ public class AtlentosManager : MonoBehaviour
         }
 
         // Schritt 2: ersten freien Index suchen
-        if (result < 0)
-        {
-            for (int index = 0; index < createdMoneyObjects.Length; index++)
-            {
-                if (createdMoneyObjects[index] == null)
-                {
+        if (result < 0) {
+            for (int index = 0; index < createdMoneyObjects.Length; index++) {
+                if (createdMoneyObjects[index] == null) {
                     result = index;
                     break;
                 }
@@ -435,27 +400,22 @@ public class AtlentosManager : MonoBehaviour
     /// Ermittelt das zu erzeugende Geldobjekt.
     /// </summary>
     /// <returns>Zu erzeugendes Geldobjekt.</returns>
-    private GameObject getMoneyObjectTemplate()
-    {
+    private GameObject getMoneyObjectTemplate() {
         // zufällig das zu erzeugende Geldobjekt bestimmen
         GameObject result;
-        if ((coinGameObject != null) && (noteGameObject != null))
-        {
+        if ((coinGameObject != null) && (noteGameObject != null)) {
             result =
                 ((UnityEngine.Random.value < 0.5f) ?
                 coinGameObject :
                 noteGameObject);
         }
-        else if ((coinGameObject != null) && (noteGameObject == null))
-        {
+        else if ((coinGameObject != null) && (noteGameObject == null)) {
             result = coinGameObject;
         }
-        else if ((coinGameObject == null) && (noteGameObject != null))
-        {
+        else if ((coinGameObject == null) && (noteGameObject != null)) {
             result = noteGameObject;
         }
-        else
-        {
+        else {
             result = null;
         }
 
@@ -467,8 +427,7 @@ public class AtlentosManager : MonoBehaviour
     /// </summary>
     /// <param name="definedPosition">[in] Definierte Position.</param>
     /// <returns>Errechnete Position.</returns>
-    private Transform getCreatePosition(Transform definedPosition)
-    {
+    private Transform getCreatePosition(Transform definedPosition) {
         // Position anpassen
         Vector3 position = new Vector3(
             definedPosition.position.x,
@@ -485,15 +444,11 @@ public class AtlentosManager : MonoBehaviour
     /// Zerstört und entfernt das Geldobjekt.
     /// </summary>
     /// <param name="moneyObject">[in] zu entfernendes Geldobjekt</param>
-    private void destroyMoneyObject(GameObject moneyObject)
-    {
+    private void destroyMoneyObject(GameObject moneyObject) {
         // GameObject entfernen
-        if (createdMoneyObjects != null)
-        {
-            for (int index = 0; index < createdMoneyObjects.Length; index++)
-            {
-                if (System.Object.Equals(createdMoneyObjects[index], moneyObject))
-                {
+        if (createdMoneyObjects != null) {
+            for (int index = 0; index < createdMoneyObjects.Length; index++) {
+                if (System.Object.Equals(createdMoneyObjects[index], moneyObject)) {
                     createdMoneyObjects[index] = null;
                     break;
                 }
@@ -509,10 +464,8 @@ public class AtlentosManager : MonoBehaviour
     /// Führt zeitgesteuert die Audioausgabe durch.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator audioOutputCoroutine()
-    {
-        // Ausgabe der Audio Clips durchführen
-        playAudioClip(startAudioClip);
+    private IEnumerator audioOutputCoroutine() {
+
 
         // Zeitpunkte berechnen
 
@@ -532,54 +485,48 @@ public class AtlentosManager : MonoBehaviour
         int nearEndSeconds = totalGameTime - 15;
         int endSeconds = totalGameTime;
 
-        int hintJumpOverWaterSeconds = (int)(((float)totalGameTime) * 1f/6f);   // nach 1/6 der Spielzeit
-        int hintAccountAtBankSeconds = (int)(((float)totalGameTime) * 1f/3f);   // nach 1/3 der Spielzeit
-        int hintLookAtSunSeconds = (int)(((float)totalGameTime) * 2f/3f);       // nach 2/3 der Spielzeit
-        int hintRaiseWaterSeconds = (int)(((float)totalGameTime) * 3f/4f);      // nach 3/4 der Spielzeit
+        int hintJumpOverWaterSeconds = (int)(((float)totalGameTime) * 1f / 6f);   // nach 1/6 der Spielzeit
+        int hintAccountAtBankSeconds = (int)(((float)totalGameTime) * 1f / 3f);   // nach 1/3 der Spielzeit
+        int hintLookAtSunSeconds = (int)(((float)totalGameTime) * 2f / 3f);       // nach 2/3 der Spielzeit
+        int hintRaiseWaterSeconds = (int)(((float)totalGameTime) * 3f / 4f);      // nach 3/4 der Spielzeit
 
-        while (isPlaying)
-        {
+        while (isPlaying) {
             yield return new WaitForSeconds(1.0f);
-            secondsElapsed++;
+            if (secondsElapsed++ <= 0) {
+                // Ausgabe der Audio Clips durchführen
+                playAudioClip(startAudioClip);
+            }
 
-            if (halfTimeOverSeconds < secondsElapsed)
-            {
+            if (halfTimeOverSeconds < secondsElapsed) {
                 playAudioClip(halfTimeOverAudioClip);
                 halfTimeOverSeconds = int.MaxValue;
             }
-            else if (nearEndSeconds < secondsElapsed)
-            {
+            else if (nearEndSeconds < secondsElapsed) {
                 playAudioClip(nearEndAudioClip);
                 nearEndSeconds = int.MaxValue;
             }
-            else if (endSeconds < secondsElapsed)
-            {
+            else if (endSeconds < secondsElapsed) {
                 playAudioClip(endAudioClip);
                 endSeconds = int.MaxValue;
             }
-            else if (hintLookAtSunSeconds < secondsElapsed)
-            {
+            else if (hintLookAtSunSeconds < secondsElapsed) {
                 playAudioClip(hintLookAtSunAudioClip);
                 hintLookAtSunSeconds = int.MaxValue;
             }
-            else if (hintJumpOverWaterSeconds < secondsElapsed)
-            {
+            else if (hintJumpOverWaterSeconds < secondsElapsed) {
                 playAudioClip(hintJumpOverWaterAudioClip);
                 hintJumpOverWaterSeconds = int.MaxValue;
             }
-            else if (hintAccountAtBankSeconds < secondsElapsed)
-            {
+            else if (hintAccountAtBankSeconds < secondsElapsed) {
                 playAudioClip(hintAccountAtBankAudioClip);
                 hintAccountAtBankSeconds = int.MaxValue;
             }
-            else if (hintRaiseWaterSeconds < secondsElapsed)
-            {
+            else if (hintRaiseWaterSeconds < secondsElapsed) {
                 playAudioClip(hintRaiseWaterAudioClip);
                 hintRaiseWaterSeconds = int.MaxValue;
             }
 
-            if (totalGameTime < secondsElapsed)
-            {
+            if (totalGameTime < secondsElapsed) {
                 isPlaying = false;
             }
         }
@@ -592,8 +539,7 @@ public class AtlentosManager : MonoBehaviour
     /// </summary>
     /// <param name="randomSecondAmount">[in] Anzahl der Sekunden, die der ermittelte Zeitpunkt maximal nach dem aktuellen Zeitpunkt liegen soll.</param>
     /// <returns>Ermittelter Zeitpunkt.</returns>
-    private DateTime getTimeAfterRandomSeconds(float randomSecondAmount)
-    {
+    private DateTime getTimeAfterRandomSeconds(float randomSecondAmount) {
         // zufällige Anzahl an Sekunden ermitteln und Zeitpunkt berechnen
         int randomSeconds =
             (int)(UnityEngine.Random.value * randomSecondAmount);
@@ -605,15 +551,14 @@ public class AtlentosManager : MonoBehaviour
     /// Spielt einen Audio Clip ab, und prüft dabei ob einer verfügbar ist.
     /// </summary>
     /// <param name="audioClip">[in] Audio Clip, der abgespielt werden soll.</param>
-    private void playAudioClip(AudioClip audioClip)
-    {
-        if (audioClip != null)
-        {
+    private void playAudioClip(AudioClip audioClip) {
+        if (audioClip != null) {
             Debug.Log("[AtlentosManager].[playAudioClip] " + audioClip.name);
-            AudioSource.PlayClipAtPoint(audioClip, new Vector3(0, 0, 0));
+            //AudioSource.PlayClipAtPoint(audioClip, playerPosition.position);
+            GlobalAudioSource.clip = audioClip;
+            GlobalAudioSource.Play();
         }
-        else
-        {
+        else {
             Debug.Log("[AtlentosManager].[playAudioClip] null");
         }
     }

@@ -165,7 +165,7 @@ namespace Icaros.Mobile.UI {
 
         public static void OpenHighscoreMenu()
         {
-            UIManager.Instance.OpenHighScoreList();
+            UIManager.Instance.OpenHighscoreList();
         }
 
         public static void CloseUI() {
@@ -245,7 +245,7 @@ namespace Icaros.Mobile.UI {
         }
 
         internal void OnUIAnyButtonPressed() {
-            if (!submitAsAny)
+             if (!submitAsAny)
                 return;
 
             if (userMoving) {
