@@ -4,6 +4,7 @@ using UnityEngine;
 using Icaros.Mobile.Localization;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 
 namespace Icaros.Mobile.UI {
     public class UIManager : MonoBehaviour {
@@ -18,8 +19,12 @@ namespace Icaros.Mobile.UI {
         public UnityEngine.EventSystems.EventSystem eventSystem;
 
         public Canvas canvas;
+        public Canvas highscore;
+
         public MenuButton[] buttons;
         public GameObject[] scrollButtons;
+
+        public Text highscoreList;
 
         private Dictionary<string, MenuItem> menuItems = new Dictionary<string, MenuItem>();
         private MenuItem root = new MenuItem();
@@ -50,6 +55,7 @@ namespace Icaros.Mobile.UI {
                 Debug.LogError("Menu Item with id: " + id + " does not exist!");
                 return;
             }
+
             openMenu(menuItems[id].children);
         }
         //to open the root menu
@@ -60,6 +66,7 @@ namespace Icaros.Mobile.UI {
         public void CloseMenu() {
             disableAllButtons();
             canvas.gameObject.SetActive(false);
+            highscore.gameObject.SetActive(false);
         }
 
         internal void buttonClicked(string id) {
@@ -214,5 +221,16 @@ namespace Icaros.Mobile.UI {
             public string title;
             public List<MenuItem> children = new List<MenuItem>();
         }
+
+        #region Highscore
+
+        public void OpenHighScoreList()
+        {
+            canvas.gameObject.SetActive(false);
+            highscore.gameObject.SetActive(true);
+            //highscoreList.text = "Sepp: 123 \nHubert: 10";
+        }
+
+        #endregion
     }
 }
