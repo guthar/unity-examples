@@ -582,20 +582,25 @@ MonoBehaviour:
     type: 3}
   moneyObjectCreationInterval: 5
   moneyObjectMaximumHeight: 50
-  hintLookAtSunAudioClip: {fileID: 0}
-  hintJumpOverWaterAudioClip: {fileID: 0}
-  hintAccountAtBankAudioClip: {fileID: 0}
-  hintRaiseWaterAudioClip: {fileID: 0}
+  hintLookAtSunAudioClip: {fileID: 8300000, guid: 1cf1896996fb96c4d9acb585d2834fef,
+    type: 3}
+  hintJumpOverWaterAudioClip: {fileID: 8300000, guid: fb6e44b9d4b996543994f32d0292de74,
+    type: 3}
+  hintAccountAtBankAudioClip: {fileID: 8300000, guid: bb6da3f958eb1c144a72fba17b578a7a,
+    type: 3}
+  hintRaiseWaterAudioClip: {fileID: 8300000, guid: 2d212fa8b806d4449afd5f32203d3f85,
+    type: 3}
   aqua: {fileID: 0}
   aquaLevel: 20
   minAquaLevel: 10
   maxAquaLevel: 40
   floodAndDrainAmount: 5
   totalGameTime: 300
-  startAudioClip: {fileID: 0}
-  halfTimeOverAudioClip: {fileID: 0}
-  nearEndAudioClip: {fileID: 0}
-  endAudioClip: {fileID: 0}
+  startAudioClip: {fileID: 8300000, guid: 10324e447b702d041a69a860652f7a64, type: 3}
+  halfTimeOverAudioClip: {fileID: 8300000, guid: de5f0033afa05504b908fde49e1a0abb,
+    type: 3}
+  nearEndAudioClip: {fileID: 8300000, guid: e38b858e07897c84db99ece5ba219e5b, type: 3}
+  endAudioClip: {fileID: 8300000, guid: 80f618e30e67760478bbd45345eb70b0, type: 3}
 --- !u!4 &1441705709
 Transform:
   m_ObjectHideFlags: 0
