@@ -27,7 +27,7 @@ namespace Icaros.Mobile.Localization {
         }
 
         public string[] localizationFileNames = new string[1]{"Localization.csv"};
-        public string defaultLanguage = "EN"; 
+        public string defaultLanguage = "DE"; 
 
         [SerializeField]
         private Language[] Languages = new Language[0];

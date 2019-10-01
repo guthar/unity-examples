@@ -14,3 +14,5 @@ MOUNT_UP_TEXT;Keep weight back. Grab handles. Press any key.;Schwerpunkt zurück
 RECONNECT_CONTROLLER;Connection to the Controller lost. Trying to reconnect.;Verbindung zum Controller verloren. Versuche die Verbindung wiederherzustellen.
 CONTROLLER_CONNECTION_LOST;Controller connection failed. Please select a new controller.;Verbindung fehlgeschlagen. Bitte wählen Sie erneut einen Controller.
 NO_BLUETOOTH;Please enable Bluetooth and restart the Game!;Bitte aktivieren Sie Bluetooth und starten Sie anschließend das Spiel neu!
+RESTART;Restart;Neues Spiel starten
+HIGHSCORE;Highscore;Bestenliste

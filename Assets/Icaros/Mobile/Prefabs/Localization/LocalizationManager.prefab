@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationFileNames:
   - Localization.csv
-  defaultLanguage: EN
+  defaultLanguage: DE
   Languages:
   - id: EN
     tokens:
@@ -82,6 +82,10 @@ MonoBehaviour:
       value: Controller connection failed. Please select a new controller.
     - key: NO_BLUETOOTH
       value: Please enable Bluetooth and restart the Game!
+    - key: RESTART
+      value: Restart game
+    - key: HIGHSCORE
+      value: Highscore
   - id: DE
     tokens:
     - key: LANGUAGE_ID
@@ -120,8 +124,12 @@ MonoBehaviour:
     - key: NO_BLUETOOTH
       value: "Bitte aktivieren Sie Bluetooth und starten Sie anschlie\xDFend das Spiel
         neu!"
+    - key: RESTART
+      value: Neues Spiel starten
+    - key: HIGHSCORE
+      value: Bestenliste
   currentLanguage:
-    id: EN
+    id: DE
     tokens:
     - key: LANGUAGE_ID
       value: EN
@@ -156,3 +164,7 @@ MonoBehaviour:
       value: Controller connection failed. Please select a new controller.
     - key: NO_BLUETOOTH
       value: Please enable Bluetooth and restart the Game!
+    - key: RESTART
+      value: Neues Spiel starten
+    - key: HIGHSCORE
+      value: Bestenliste
