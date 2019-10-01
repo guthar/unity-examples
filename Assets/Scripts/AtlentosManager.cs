@@ -93,11 +93,20 @@ public class AtlentosManager : MonoBehaviour
     #endregion
     #region Einstellungen: Wasserstand
     /// <summary>
+    /// Stellt die Wasseroberfläche dar.
+    /// </summary>
+    [Tooltip("Wasseroberfläche.")]
+    public GameObject aqua;
+
+    /// <summary>
     /// Definiert den Wasserstand in der Stadt.
     /// </summary>
     [Tooltip("Wasserstand.")]
-    [Range(10.0f, 40.0f)]
     public float aquaLevel = 20.0f;
+
+    public float minAquaLevel = 10.0f;
+    public float maxAquaLevel = 40.0f;
+    public float floodAndDrainAmount = 5.0f;
     #endregion
     #region Einstellungen: Spielzeit
     /// <summary>
@@ -147,9 +156,14 @@ public class AtlentosManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Wasserstand berechnen
+        if ((isFlooding) || (isDraining))
+        {
+            updateAquaLevel();
+        }
     }
 
+    #region Ereignisse: Bank/Weltspartag
     /// <summary>
     /// Sammelt das Geldobjekt ein.
     /// </summary>
@@ -187,6 +201,61 @@ public class AtlentosManager : MonoBehaviour
         }
         totalScore += interest;
     }
+    #endregion
+    #region Ereignisse: Wasserstand
+    private bool isFlooding = false;
+    private bool isDraining = false;
+    /// <summary>
+    /// Lässt den Wasserstand steigen.
+    /// </summary>
+    public void Flood()
+    {
+        isFlooding = true;
+        isDraining = false;
+    }
+
+    /// <summary>
+    /// Lässt den Wasserstand wieder ablaufen.
+    /// </summary>
+    public void Drain()
+    {
+        isFlooding = false;
+        isDraining = true;
+    }
+
+    /// <summary>
+    /// Verändert den Wasserspiegel.
+    /// </summary>
+    private void updateAquaLevel()
+    {
+        float newAquaLevel = aquaLevel;
+        if (isFlooding)
+        {
+            newAquaLevel = Mathf.Min(aquaLevel + (floodAndDrainAmount * Time.deltaTime), maxAquaLevel);
+            if (newAquaLevel == maxAquaLevel)
+            {
+                isFlooding = false;
+            }
+        }
+        else if (isDraining)
+        {
+            newAquaLevel = Mathf.Max(aquaLevel - (floodAndDrainAmount * Time.deltaTime), minAquaLevel);
+            if (newAquaLevel == minAquaLevel)
+            {
+                isDraining = false;
+            }
+        }
+
+        if (aquaLevel != newAquaLevel)
+        {
+            aquaLevel = newAquaLevel;
+            aqua.transform.position.Set(
+                aqua.transform.position.x,
+                aquaLevel,
+                aqua.transform.position.z);
+        }
+    }
+    #endregion
 
     // zeitgesteuerte Routinen
 
@@ -443,10 +512,7 @@ public class AtlentosManager : MonoBehaviour
     private IEnumerator audioOutputCoroutine()
     {
         // Ausgabe der Audio Clips durchführen
-        if (startAudioClip != null)
-        {
-            AudioSource.PlayClipAtPoint(startAudioClip, gameObject.transform.position);
-        }
+        playAudioClip(startAudioClip);
 
         // Zeitpunkte berechnen
         int secondsElapsed = 0;
@@ -465,37 +531,37 @@ public class AtlentosManager : MonoBehaviour
 
             if (halfTimeOverSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(halfTimeOverAudioClip, gameObject.transform.position);
+                playAudioClip(halfTimeOverAudioClip);
                 halfTimeOverSeconds = int.MaxValue;
             }
             else if (nearEndSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(nearEndAudioClip, gameObject.transform.position);
+                playAudioClip(nearEndAudioClip);
                 nearEndSeconds = int.MaxValue;
             }
             else if (endSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(endAudioClip, gameObject.transform.position);
+                playAudioClip(endAudioClip);
                 endSeconds = int.MaxValue;
             }
             else if (hintLookAtSunSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(hintLookAtSunAudioClip, gameObject.transform.position);
+                playAudioClip(hintLookAtSunAudioClip);
                 hintLookAtSunSeconds = int.MaxValue;
             }
             else if (hintJumpOverWaterSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(hintJumpOverWaterAudioClip, gameObject.transform.position);
+                playAudioClip(hintJumpOverWaterAudioClip);
                 hintJumpOverWaterSeconds = int.MaxValue;
             }
             else if (hintAccountAtBankSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(hintAccountAtBankAudioClip, gameObject.transform.position);
+                playAudioClip(hintAccountAtBankAudioClip);
                 hintAccountAtBankSeconds = int.MaxValue;
             }
             else if (hintRaiseWaterSeconds < secondsElapsed)
             {
-                AudioSource.PlayClipAtPoint(hintRaiseWaterAudioClip, gameObject.transform.position);
+                playAudioClip(hintRaiseWaterAudioClip);
                 hintRaiseWaterSeconds = int.MaxValue;
             }
 
@@ -522,4 +588,20 @@ public class AtlentosManager : MonoBehaviour
         return result;
     }
 
+    /// <summary>
+    /// Spielt einen Audio Clip ab, und prüft dabei ob einer verfügbar ist.
+    /// </summary>
+    /// <param name="audioClip">[in] Audio Clip, der abgespielt werden soll.</param>
+    private void playAudioClip(AudioClip audioClip)
+    {
+        if (audioClip != null)
+        {
+            Debug.Log("[AtlentosManager].[PlayAudioClip] " + audioClip.name);
+            AudioSource.PlayClipAtPoint(audioClip, gameObject.transform.position);
+        }
+        else
+        {
+            Debug.Log("[AtlentosManager].[PlayAudioClip] null");
+        }
+    }
 }

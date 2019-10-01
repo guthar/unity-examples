@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MoneyObject
+  - Bank
   layers:
   - Default
   - TransparentFX
