@@ -515,14 +515,27 @@ public class AtlentosManager : MonoBehaviour
         playAudioClip(startAudioClip);
 
         // Zeitpunkte berechnen
+
+        // Berechnung für 120 Sekunden
+        // 000-004  Start
+        // 020-030  Jump over water
+        // 040-048  Account at bank
+        // 060-063  Half of time over
+        // 080-088  Look at sun
+        // 090-101  Raise water
+        // 105-108  Near end
+        // 120-124  End
+
+
         int secondsElapsed = 0;
         int halfTimeOverSeconds = totalGameTime / 2;
-        int nearEndSeconds = totalGameTime - 30;
+        int nearEndSeconds = totalGameTime - 15;
         int endSeconds = totalGameTime;
-        int hintLookAtSunSeconds = halfTimeOverSeconds + 30;
-        int hintJumpOverWaterSeconds = (int)(((float)totalGameTime) * 0.33f) ;
-        int hintAccountAtBankSeconds = (int)(((float)totalGameTime) * 0.66f);
-        int hintRaiseWaterSeconds = (int)(((float)totalGameTime) * 0.75f);
+
+        int hintJumpOverWaterSeconds = (int)(((float)totalGameTime) * 1f/6f);   // nach 1/6 der Spielzeit
+        int hintAccountAtBankSeconds = (int)(((float)totalGameTime) * 1f/3f);   // nach 1/3 der Spielzeit
+        int hintLookAtSunSeconds = (int)(((float)totalGameTime) * 2f/3f);       // nach 2/3 der Spielzeit
+        int hintRaiseWaterSeconds = (int)(((float)totalGameTime) * 3f/4f);      // nach 3/4 der Spielzeit
 
         while (isPlaying)
         {
@@ -596,12 +609,12 @@ public class AtlentosManager : MonoBehaviour
     {
         if (audioClip != null)
         {
-            Debug.Log("[AtlentosManager].[PlayAudioClip] " + audioClip.name);
-            AudioSource.PlayClipAtPoint(audioClip, gameObject.transform.position);
+            Debug.Log("[AtlentosManager].[playAudioClip] " + audioClip.name);
+            AudioSource.PlayClipAtPoint(audioClip, new Vector3(0, 0, 0));
         }
         else
         {
-            Debug.Log("[AtlentosManager].[PlayAudioClip] null");
+            Debug.Log("[AtlentosManager].[playAudioClip] null");
         }
     }
 }
