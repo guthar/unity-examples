@@ -13,6 +13,12 @@ namespace Icaros.Mobile.UI {
         void Awake() {
             if (Instance == null) {
                 Instance = this;
+
+                //Hacky, hacky, hack hack
+                var highscoreCanvas = transform.Find("HighscoreCanvas");
+                var backButton = highscoreCanvas.Find("BackButton");
+                var btn = backButton.GetComponent<Button>();
+                btn.onClick.AddListener(CloseHighscoreList);
             }
         }
 
@@ -224,11 +230,19 @@ namespace Icaros.Mobile.UI {
 
         #region Highscore
 
-        public void OpenHighScoreList()
+        public void OpenHighscoreList()
         {
             canvas.gameObject.SetActive(false);
             highscore.gameObject.SetActive(true);
+           
+            
             //highscoreList.text = "Sepp: 123 \nHubert: 10";
+        }
+
+        public void CloseHighscoreList()
+        {
+            canvas.gameObject.SetActive(true);
+            highscore.gameObject.SetActive(false);
         }
 
         #endregion
