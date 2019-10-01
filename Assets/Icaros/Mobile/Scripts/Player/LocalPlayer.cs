@@ -97,7 +97,7 @@ namespace Icaros.Mobile.Player {
             if (ready) {
                 // Unter Wasser
                 // TODO: "underWater" verwenden
-                if (transform.position.y < 20f) {
+                if (transform.position.y < atlentosManager.aquaLevel) {
                     rb.useGravity = false;
                     rb.drag = 0.7f;
 

@@ -81,6 +81,41 @@ public class AtlentosManager : MonoBehaviour
     [Tooltip("Definiert die Höhe, in der Geldobjekte maximal erstellt werden.")]
     public float moneyObjectMaximumHeight = 50f;
     #endregion
+    #region Einstellungen: Anleitung
+    [Tooltip("Hinweis, die Sonne zu beobachten.")]
+    public AudioClip hintLookAtSunAudioClip;
+    [Tooltip("Hinweis, aus dem Wasser zu springen.")]
+    public AudioClip hintJumpOverWaterAudioClip;
+    [Tooltip("Hinweis, Geld an der Bank abzuliefern.")]
+    public AudioClip hintAccountAtBankAudioClip;
+    [Tooltip("Hinweis, Wasserspiegel steigen lassen.")]
+    public AudioClip hintRaiseWaterAudioClip;
+    #endregion
+    #region Einstellungen: Wasserstand
+    /// <summary>
+    /// Definiert den Wasserstand in der Stadt.
+    /// </summary>
+    [Tooltip("Wasserstand.")]
+    [Range(10.0f, 40.0f)]
+    public float aquaLevel = 20.0f;
+    #endregion
+    #region Einstellungen: Spielzeit
+    /// <summary>
+    /// Gesamte Spielzeit in Sekunden.
+    /// </summary>
+    [Tooltip("Gesamte Spielzeit in Sekunden.")]
+    [Range(30, 600)]
+    public int totalGameTime = 300;
+
+    [Tooltip("Ton, der zum Start des Spiels abgespielt wird.")]
+    public AudioClip startAudioClip;
+    [Tooltip("Ton, der zur Hälfte des Spiels abgespielt wird.")]
+    public AudioClip halfTimeOverAudioClip;
+    [Tooltip("Ton, der nahe dem Ende des Spiels abgespielt wird.")]
+    public AudioClip nearEndAudioClip;
+    [Tooltip("Ton, der zum Ende des Spiels abgespielt wird.")]
+    public AudioClip endAudioClip;
+    #endregion
 
     /// <summary>
     /// Kennzeichen, ob das Spiel läuft oder nicht.
@@ -106,6 +141,7 @@ public class AtlentosManager : MonoBehaviour
         // Coroutinen starten
         StartCoroutine(nameof(weltspartagCoroutine));
         StartCoroutine(nameof(moneyObjectsCoroutine));
+        StartCoroutine(nameof(audioOutputCoroutine));
     }
 
     // Update is called once per frame
@@ -397,6 +433,77 @@ public class AtlentosManager : MonoBehaviour
 
         moneyObject.SetActive(false);
         UnityEngine.Object.Destroy(moneyObject);
+    }
+    #endregion
+    #region Zeitsteuerung: Audioausgabe
+    /// <summary>
+    /// Führt zeitgesteuert die Audioausgabe durch.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator audioOutputCoroutine()
+    {
+        // Ausgabe der Audio Clips durchführen
+        if (startAudioClip != null)
+        {
+            AudioSource.PlayClipAtPoint(startAudioClip, gameObject.transform.position);
+        }
+
+        // Zeitpunkte berechnen
+        int secondsElapsed = 0;
+        int halfTimeOverSeconds = totalGameTime / 2;
+        int nearEndSeconds = totalGameTime - 30;
+        int endSeconds = totalGameTime;
+        int hintLookAtSunSeconds = halfTimeOverSeconds + 30;
+        int hintJumpOverWaterSeconds = (int)(((float)totalGameTime) * 0.33f) ;
+        int hintAccountAtBankSeconds = (int)(((float)totalGameTime) * 0.66f);
+        int hintRaiseWaterSeconds = (int)(((float)totalGameTime) * 0.75f);
+
+        while (isPlaying)
+        {
+            yield return new WaitForSeconds(1.0f);
+            secondsElapsed++;
+
+            if (halfTimeOverSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(halfTimeOverAudioClip, gameObject.transform.position);
+                halfTimeOverSeconds = int.MaxValue;
+            }
+            else if (nearEndSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(nearEndAudioClip, gameObject.transform.position);
+                nearEndSeconds = int.MaxValue;
+            }
+            else if (endSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(endAudioClip, gameObject.transform.position);
+                endSeconds = int.MaxValue;
+            }
+            else if (hintLookAtSunSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(hintLookAtSunAudioClip, gameObject.transform.position);
+                hintLookAtSunSeconds = int.MaxValue;
+            }
+            else if (hintJumpOverWaterSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(hintJumpOverWaterAudioClip, gameObject.transform.position);
+                hintJumpOverWaterSeconds = int.MaxValue;
+            }
+            else if (hintAccountAtBankSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(hintAccountAtBankAudioClip, gameObject.transform.position);
+                hintAccountAtBankSeconds = int.MaxValue;
+            }
+            else if (hintRaiseWaterSeconds < secondsElapsed)
+            {
+                AudioSource.PlayClipAtPoint(hintRaiseWaterAudioClip, gameObject.transform.position);
+                hintRaiseWaterSeconds = int.MaxValue;
+            }
+
+            if (totalGameTime < secondsElapsed)
+            {
+                isPlaying = false;
+            }
+        }
     }
     #endregion
 
