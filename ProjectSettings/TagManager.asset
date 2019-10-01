@@ -10,6 +10,7 @@ TagManager:
   - Flood
   - Fisher
   - FisherNet
+  - Water
   layers:
   - Default
   - TransparentFX
