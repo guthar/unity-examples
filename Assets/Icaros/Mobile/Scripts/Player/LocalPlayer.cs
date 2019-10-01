@@ -9,6 +9,7 @@ namespace Icaros.Mobile.Player {
     public class LocalPlayer : NetworkBehaviour {
         private const string MoneyObjectTag = "MoneyObject";
         private const string WaterTag = "Water";
+        private const string BankTag = "Bank";
 
         public GameObject Camera;
         public GameObject Head;
@@ -213,8 +214,17 @@ namespace Icaros.Mobile.Player {
                 // Geld einsammeln
                 collectMoneyObject(other.gameObject);
             }
+            else if (isBank(other.gameObject))
+            {
+                // Geld einzahlen
+                accountCollectedMoney();
+            }
         }
 
+        /// <summary>
+        /// Verarbeitet das Verlassen von anderen Trigger-Objekten
+        /// </summary>
+        /// <param name="other">[in] Das Objekt, das den Trigger ausgelöst hat.</param>
         private void OnTriggerExit(Collider other)
         {
             // bestimmen, welches Objekt den Trigger ausgelöst hat
@@ -259,6 +269,21 @@ namespace Icaros.Mobile.Player {
         }
 
         /// <summary>
+        /// Bestimmt, ob es sich um das Bankobjekt handelt.
+        /// </summary>
+        /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
+        /// <returns>
+        /// <i>true</i> - Es handelt sich um das Bankobjekt.<br/>
+        /// <i>false</i> - Es handelt sich um ein anderes Objekt.
+        /// </returns>
+        private bool isBank(GameObject other)
+        {
+            // Objekttyp bestimmen
+            bool result = other.CompareTag(BankTag);
+            return result;
+        }
+
+        /// <summary>
         /// Verarbeitet das Einsammeln eines Geldobjekts.
         /// </summary>
         /// <param name="moneyObject">[in] eingesammeltes Geldobjekt</param>
@@ -279,8 +304,21 @@ namespace Icaros.Mobile.Player {
                 currentWeight += moneyObjectProperties.weight;
 
                 // Information an Spielmanagerobjekt übergeben
-                atlentosManager.CollectMoneyObject(moneyObjectProperties);
+                atlentosManager.CollectMoneyObject(moneyObject, moneyObjectProperties);
             }
+        }
+
+        /// <summary>
+        /// Zahlt das Geld in die Bank ein.
+        /// </summary>
+        private void accountCollectedMoney()
+        {
+            // einzahlen
+            atlentosManager.AccountMoney(currentScore);
+
+            // gesammeltes Geld und Gewicht zurücksetzen
+            currentScore = 0;
+            currentWeight = 0;
         }
     }
 }
