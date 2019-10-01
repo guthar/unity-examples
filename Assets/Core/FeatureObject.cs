@@ -55,7 +55,7 @@ namespace GeoJSON {
                         else
                             items.Add(innerItem.str);
                     };
-                    properties.Add(key, string.Join(",", items.ToArray()));
+                    properties.Add(key, string.Join(";", items.ToArray()));
                 }
                     
 			}			
