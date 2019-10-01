@@ -61,6 +61,7 @@ MonoBehaviour:
   PitchRotationFactor: 1.5
   jumpAudioClip: {fileID: 8300000, guid: a0b47ce1eafa13642886586021cf9ae9, type: 3}
   diveAudioClip: {fileID: 8300000, guid: dd76c5a9618326b49babc36943b1a7fe, type: 3}
+  catchAudioClip: {fileID: 8300000, guid: 9ce5b8b75499b4b4b9b728e3e80d88e4, type: 3}
   minWeight: 5
   maxWeight: 10
 --- !u!143 &143282121244400860

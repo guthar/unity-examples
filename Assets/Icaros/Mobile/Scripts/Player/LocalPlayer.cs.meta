@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 312283a14e724e34b8a46d39b166eb6b
-timeCreated: 1506005729
-licenseType: Pro
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Camera: {instanceID: 0}
+  - Head: {instanceID: 0}
+  - Vehicle: {instanceID: 0}
+  - jumpAudioClip: {instanceID: 0}
+  - diveAudioClip: {instanceID: 0}
+  - catchAudioClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
