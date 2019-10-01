@@ -1,5 +1,7 @@
 # Story des Spiels
 
+**Titel:** Atlentos
+
 ## Figur
 
 Die Spielfigur ist der Raiffeisen Club Hecht. (-> Asset kaufen)
@@ -37,6 +39,8 @@ Punkte können durch folgende Aktionen erreicht werden:
 * Bringen des eingesammelten Geldes zur Bank am Weltspartag (zusätzliche Zinsen) (-> offen)
 
 Die aktuelle Punkteanzahl wird an mehreren Stellen in der Stadt auf Displays angezeigt (z.B. Passage). (-> offen)
+
+Wie man die erzielten Punkte gegen reale Waren umtauschen kann, ist noch offen! (-> offen)
 
 ## Besonderheiten
 
@@ -86,6 +90,24 @@ Gesammeltes, jedoch nicht abgeliefertes Geld wird nach Spielende sofort wieder a
 ### Schwierigkeitsgrade
 
 (-> kein Thema für den Hackathon)
+
+### Gewicht
+
+Je mehr Münzen man sammelt, desto schwerer wird man. Dadurch langsamer und man kann nicht mehr so hoch aus dem Wasser springen.
+Erst wenn man bei der Bank abliefert, wird man wieder leichter.
+
+### Anleitung
+
+Sprachausgabe zur Anleitung des Spiels.
+
+* Es ist schönes Wetter, du solltest öfter mal einen Blick in die Sonne wagen.
+  Wenn sie sich verändert, kannst du mehr Zinsen für das gesammelte Geld bekommen.
+* Auch über dem Wasserspiegel kannst du Geld sammeln.
+  Tauche ab um Schwung zu holen und springe dann aus dem Wasser.
+* Du hast schon sehr viel Geld gesammelt, das ist schwer.
+  Am besten du lieferst es bei der Bank ab um wieder leichter zu werden.
+* Wenn es dir schwer fällt, Geld über dem Wasserspiegel zu sammeln, kannst du versuchen den Wasserspiegel steigen zu lassen.
+  Schwimme dazu Richtung Donau.
 
 ### Sonstiges für Pitch
 
