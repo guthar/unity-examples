@@ -6,6 +6,10 @@ TagManager:
   tags:
   - MoneyObject
   - Bank
+  - Drain
+  - Flood
+  - Fisher
+  - FisherNet
   layers:
   - Default
   - TransparentFX

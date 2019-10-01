@@ -10,6 +10,8 @@ namespace Icaros.Mobile.Player {
         private const string MoneyObjectTag = "MoneyObject";
         private const string WaterTag = "Water";
         private const string BankTag = "Bank";
+        private const string FloodTag = "Flood";
+        private const string DrainTag = "Drain";
 
         public GameObject Camera;
         public GameObject Head;
@@ -224,6 +226,14 @@ namespace Icaros.Mobile.Player {
                 // Geld einzahlen
                 accountCollectedMoney();
             }
+            else if (isFlood(other.gameObject))
+            {
+                atlentosManager.Flood();
+            }
+            else if (isDrain(other.gameObject))
+            {
+                atlentosManager.Drain();
+            }
         }
 
         /// <summary>
@@ -285,6 +295,34 @@ namespace Icaros.Mobile.Player {
         {
             // Objekttyp bestimmen
             bool result = other.CompareTag(BankTag);
+            return result;
+        }
+
+        /// <summary>
+        /// Bestimmt, ob es sich um das Floodobjekt handelt.
+        /// </summary>
+        /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
+        /// <returns>
+        /// <i>true</i> - Es handelt sich um das Floodobjekt.<br/>
+        /// <i>false</i> - Es handelt sich um ein anderes Objekt.
+        /// <returns></returns>
+        private bool isFlood(GameObject other)
+        {
+            bool result = other.CompareTag(FloodTag);
+            return result;
+        }
+
+        /// <summary>
+        /// Bestimmt, ob es sich um das Drainobjekt handelt.
+        /// </summary>
+        /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
+        /// <returns>
+        /// <i>true</i> - Es handelt sich um das Drainobjekt.<br/>
+        /// <i>false</i> - Es handelt sich um ein anderes Objekt.
+        /// <returns></returns>
+        private bool isDrain(GameObject other)
+        {
+            bool result = other.CompareTag(DrainTag);
             return result;
         }
 
