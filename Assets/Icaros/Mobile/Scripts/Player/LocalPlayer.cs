@@ -12,6 +12,7 @@ namespace Icaros.Mobile.Player {
         private const string BankTag = "Bank";
         private const string FloodTag = "Flood";
         private const string DrainTag = "Drain";
+        private const string FishernetTag = "FisherNet";
 
         public GameObject Camera;
         public GameObject Head;
@@ -156,6 +157,12 @@ namespace Icaros.Mobile.Player {
         public AudioClip diveAudioClip;
 
         /// <summary>
+        /// Audio Clip, der beim Fangen des Hechtes abgespielt wird.
+        /// </summary>
+        [Tooltip("Ton, der abgespielt wird, wenn der Hecht im Netz landet.")]
+        public AudioClip catchAudioClip;
+
+        /// <summary>
         /// Minimales Gewicht des Players.
         /// </summary>
         [Tooltip("Minimales Gewicht des Players.")]
@@ -233,6 +240,10 @@ namespace Icaros.Mobile.Player {
             else if (isDrain(other.gameObject))
             {
                 atlentosManager.Drain();
+            }
+            else if (isFisherNet(other.gameObject))
+            {
+                catchedByNet(other.gameObject);
             }
         }
 
@@ -313,6 +324,20 @@ namespace Icaros.Mobile.Player {
         }
 
         /// <summary>
+        /// Bestimmt, ob es sich um das Fishernetz-Objekt handelt.
+        /// </summary>
+        /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
+        /// <returns>
+        /// <i>true</i> - Es handelt sich um das Fishernetz-Objekt.<br/>
+        /// <i>false</i> - Es handelt sich um ein anderes Objekt.
+        /// <returns></returns>
+        private bool isFisherNet(GameObject other)
+        {
+            bool result = other.CompareTag(FishernetTag);
+            return result;
+        }
+
+        /// <summary>
         /// Bestimmt, ob es sich um das Drainobjekt handelt.
         /// </summary>
         /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
@@ -324,6 +349,12 @@ namespace Icaros.Mobile.Player {
         {
             bool result = other.CompareTag(DrainTag);
             return result;
+        }
+
+        private void catchedByNet(GameObject netObject)
+        {
+            rb.AddForce(transform.forward * -1 * MoveSpeed * 80 * Time.deltaTime);
+            AudioSource.PlayClipAtPoint(catchAudioClip, gameObject.transform.position);
         }
 
         /// <summary>
