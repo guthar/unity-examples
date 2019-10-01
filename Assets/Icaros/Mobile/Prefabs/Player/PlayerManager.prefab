@@ -143,8 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  PlayerTemplate: {fileID: 1393405361220106, guid: 26e88141255d4ab43b336b9b3bb1cbb7,
-    type: 3}
+  PlayerTemplate: {fileID: 100038, guid: eb8e07cd3e0ce494f81482c6835d2b10, type: 3}
   VirtualRealityCameraRig: {fileID: 0}
   SpectatorCameraRig: {fileID: 1854251631664746, guid: dad6e6d5c4f9ebe4a8523b0a8809d8be,
     type: 3}
