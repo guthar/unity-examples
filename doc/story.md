@@ -108,6 +108,11 @@ Sprachausgabe zur Anleitung des Spiels.
   Am besten du lieferst es bei der Bank ab um wieder leichter zu werden.
 * Wenn es dir schwer fällt, Geld über dem Wasserspiegel zu sammeln, kannst du versuchen den Wasserspiegel steigen zu lassen.
   Schwimme dazu Richtung Donau.
+* Ansage der verbleibenden Zeit.
+  * Los gehts! Sammle in den folgenden 5 Minuten soviel Geld wie möglich und bringe es zur Bank.
+  * Die Hälfte deiner Spielzeit ist nun verstrichen.
+  * Noch 30 Sekunden bis zum Spielende.
+  * Die Spielzeit ist zuende. Hecht geil, dass du gespielt hast!
 
 ### Sonstiges für Pitch
 
