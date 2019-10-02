@@ -192,10 +192,10 @@ public class AtlentosManager : MonoBehaviour {
     /// Gibt das gesammelte Geld an der Bank ab.
     /// </summary>
     /// <param name="scoreValue">[in] Wert des abzugebenden Geldes.</param>
-    public void AccountMoney(float scoreValue) {
+    public void AccountMoney(float scoreValue, Vector3 position) {
         // Einzahlungston abspielen
         if (scoreValue > 0f) {
-            AudioSource.PlayClipAtPoint(accountAudioClip, gameObject.transform.position);
+            AudioSource.PlayClipAtPoint(accountAudioClip, position);
         }
 
         // Wert übernehmen
