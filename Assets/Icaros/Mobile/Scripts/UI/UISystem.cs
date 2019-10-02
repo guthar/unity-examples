@@ -165,7 +165,7 @@ namespace Icaros.Mobile.UI {
 
         public static void OpenHighscoreMenu()
         {
-            UIManager.Instance.OpenHighscoreList();
+            UIManager.Instance.ToggleHighscoreList();
         }
 
         public static void CloseUI() {
@@ -288,26 +288,33 @@ namespace Icaros.Mobile.UI {
         internal void OnUIMenuButtonClicked(string id) {
             MenuItemSelected(id);
 
-            switch (id) {
-                case "backToRoot":
-                    OpenMainMenu();
-                    break;
-                case "backToOptions":
-                    OpenOptionsMenu();
-                    break;
-                case "ica_play":
-                    PlayPressed();
-                    break;
-                case "ica_highscore":
-                    OpenHighscoreMenu();
-                    break;
-                default:
-                    if (id.StartsWith("ica_lang_")) {
-                        string lang = id.Substring(9, 2);
-                        LocalizationManager.SetLanguage(lang);
+            // Hack wegen Scoreboard
+            if (UIManager.Instance.CloseHighscoreList() == 0)
+            {
+
+                switch (id)
+                {
+                    case "backToRoot":
+                        OpenMainMenu();
+                        break;
+                    case "backToOptions":
                         OpenOptionsMenu();
-                    }
-                    break;
+                        break;
+                    case "ica_play":
+                        PlayPressed();
+                        break;
+                    case "ica_highscore":
+                        OpenHighscoreMenu();
+                        break;
+                    default:
+                        if (id.StartsWith("ica_lang_"))
+                        {
+                            string lang = id.Substring(9, 2);
+                            LocalizationManager.SetLanguage(lang);
+                            OpenOptionsMenu();
+                        }
+                        break;
+                }
             }
         }
 
