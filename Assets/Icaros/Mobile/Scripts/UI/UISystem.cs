@@ -456,7 +456,7 @@ namespace Icaros.Mobile.UI {
 
         private void initializeMenuStructure() {
             UIManager.Instance.RegisterMenuItem("ica_play", "PLAY");
-            UIManager.Instance.RegisterMenuItem("ica_restart", "RESTART");
+            //UIManager.Instance.RegisterMenuItem("ica_restart", "RESTART");
             UIManager.Instance.RegisterMenuItem("ica_highscore", "HIGHSCORE");
             UIManager.Instance.RegisterMenuItem("ica_options", "OPTIONS");
             UIManager.Instance.RegisterMenuItem("ica_languages", "LANGUAGES", "ica_options");
