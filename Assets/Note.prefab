@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f06f5761a7dfa4484e9f8fee936455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreFactor: 100
+  scoreFactor: 5
   weight: 3
   collectAudioClip: {fileID: 8300000, guid: db0ea09ce1dd4c746a2bce5c5d88eabd, type: 3}
 --- !u!135 &4328368993409068382
