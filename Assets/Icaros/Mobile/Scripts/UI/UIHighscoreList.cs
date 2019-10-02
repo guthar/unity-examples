@@ -110,10 +110,13 @@ namespace Assets.Icaros.Mobile.Scripts.UI
 
         public static void AddScoreBoardEntry(string name, float score)
         {
+            Highscores highscores = null;
             var highscoreEntry = new HighscoreEntry() { name = name, score = score };
 
             var jsonString = PlayerPrefs.GetString("highscoreTable");
-            Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+            if (string.IsNullOrEmpty(jsonString)) { highscores = new Highscores() { highscoreEntryList = new List<HighscoreEntry>() } }
+            else { highscores = JsonUtility.FromJson<Highscores>(jsonString); }
+            
             
             newHighscoreEntry = highscoreEntry;
             
