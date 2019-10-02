@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 8519572437484542689}
   m_Layer: 0
   m_Name: GreatWhite
-  m_TagString: Untagged
+  m_TagString: Shark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 2715196869849901857}
   m_Layer: 0
   m_Name: GreatWhiteShark
-  m_TagString: Untagged
+  m_TagString: Shark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -326,7 +326,7 @@ Animation:
   m_GameObject: {fileID: 8519572437487654889}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400002, guid: fb300a76933900940bc6efd8daf3868c, type: 3}
+  m_Animation: {fileID: 7400000, guid: fb300a76933900940bc6efd8daf3868c, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: fb300a76933900940bc6efd8daf3868c, type: 3}
   - {fileID: 7400002, guid: fb300a76933900940bc6efd8daf3868c, type: 3}
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61fde55108be11549b8f5ef55b7e5f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0.5
+  Speed: 3
   RotationDelta: 20
 --- !u!82 &2715196869849901857
 AudioSource:

@@ -25,6 +25,6 @@ public class SharkBehaviour : MonoBehaviour
 
         currentRotation = currentRotation + RotationDelta * Time.deltaTime;
         transform.rotation = Quaternion.Euler(0, currentRotation, 0);
-        transform.Translate(Speed * Time.deltaTime, 0, 0);
+        transform.Translate(0, 0, Speed * Time.deltaTime);
     }
 }

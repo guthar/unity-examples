@@ -11,6 +11,7 @@ TagManager:
   - Fisher
   - FisherNet
   - Water
+  - Shark
   layers:
   - Default
   - TransparentFX
