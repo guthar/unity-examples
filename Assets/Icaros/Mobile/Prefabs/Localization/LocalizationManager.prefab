@@ -127,7 +127,7 @@ MonoBehaviour:
     - key: RESTART
       value: Neues Spiel starten
     - key: HIGHSCORE
-      value: Bestenliste
+      value: Hechtscore
   currentLanguage:
     id: DE
     tokens:
