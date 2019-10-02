@@ -221,7 +221,10 @@ namespace Icaros.Mobile.Player {
             {
                 isUnderWater = true;
                 rb.useGravity = false;
-                rb.drag = 0.7f;
+                rb.drag = 1f;
+
+                RenderSettings.fogColor = new Color(0, 0, 1f);
+                RenderSettings.fogStartDistance = 40f;
 
                 dive();
             }
@@ -261,6 +264,8 @@ namespace Icaros.Mobile.Player {
                 isUnderWater = false;
                 rb.useGravity = true;
                 rb.drag = 0f;
+
+                RenderSettings.fogColor = new Color(1f, 1f, 1f);
 
                 jump();
             }
@@ -390,7 +395,7 @@ namespace Icaros.Mobile.Player {
         private void accountCollectedMoney()
         {
             // einzahlen
-            atlentosManager.AccountMoney(currentScore);
+            atlentosManager.AccountMoney(currentScore, transform.position);
 
             // gesammeltes Geld und Gewicht zurücksetzen
             currentScore = 0;
