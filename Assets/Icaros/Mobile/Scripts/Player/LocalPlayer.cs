@@ -61,12 +61,23 @@ namespace Icaros.Mobile.Player {
             UnityEngine.XR.InputTracking.Recenter();
         }
 
-        void Start() {
+        public void InstantiateNewPlayer() {
             rb = GetComponent<Rigidbody>();
             rb.mass = minWeight;
             atlentosManager = FindObjectOfType<AtlentosManager>();
             //atlentosManager.playerPosition = this.transform;
+            atlentosManager.GameFinished += AtlentosManager_GameFinished;
             PlayerManager.Instance.registerPlayer(this);
+        }
+
+        private void AtlentosManager_GameFinished()
+        {
+            //TODO: Cleanup
+        }
+
+        void Start()
+        {
+            InstantiateNewPlayer();
         }
 
         void rotateX(float x) {

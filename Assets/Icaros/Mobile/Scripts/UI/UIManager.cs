@@ -6,19 +6,26 @@ using System.Linq;
 using System;
 using UnityEngine.UI;
 
-namespace Icaros.Mobile.UI {
-    public class UIManager : MonoBehaviour {
+namespace Icaros.Mobile.UI
+{
+    public class UIManager : MonoBehaviour
+    {
         public static UIManager Instance = null;
 
-        void Awake() {
-            if (Instance == null) {
+        private Button backButtonHighscore = null;
+        private bool isHighscoreOpen = false;
+
+        void Awake()
+        {
+            if (Instance == null)
+            {
                 Instance = this;
 
                 //Hacky, hacky, hack hack
                 var highscoreCanvas = transform.Find("HighscoreCanvas");
                 var backButton = highscoreCanvas.Find("BackButton");
-                var btn = backButton.GetComponent<Button>();
-                btn.onClick.AddListener(CloseHighscoreList);
+                backButtonHighscore = backButton.GetComponent<Button>();
+                backButtonHighscore.onClick.AddListener(() => { CloseHighscoreList(); });
             }
         }
 
@@ -40,24 +47,30 @@ namespace Icaros.Mobile.UI {
         private int lowerPageLimit = 0;
         private int upperPageLimit = 3;
 
-        public void RegisterMenuItem(string id, string title, string parent, bool FirstInList = false) {
-            if (!menuItems.ContainsKey(parent)) {
+        public void RegisterMenuItem(string id, string title, string parent, bool FirstInList = false)
+        {
+            if (!menuItems.ContainsKey(parent))
+            {
                 Debug.LogError("Parent with id: " + parent + " does not exist!");
                 return;
             }
             registerMenuItem(id, title, menuItems[parent], FirstInList);
         }
         //to register to the root menu
-        public void RegisterMenuItem(string id, string title) {
+        public void RegisterMenuItem(string id, string title)
+        {
             registerMenuItem(id, title, root, false);
         }
         //to generate a new menu anchor object
-        public void RegisterUnlistedMenuItem(string id, string title) {
+        public void RegisterUnlistedMenuItem(string id, string title)
+        {
             registerMenuItem(id, title, unlisted, false);
         }
 
-        public void OpenMenu(string id) {
-            if (!menuItems.ContainsKey(id)) {
+        public void OpenMenu(string id)
+        {
+            if (!menuItems.ContainsKey(id))
+            {
                 Debug.LogError("Menu Item with id: " + id + " does not exist!");
                 return;
             }
@@ -65,24 +78,28 @@ namespace Icaros.Mobile.UI {
             openMenu(menuItems[id].children);
         }
         //to open the root menu
-        public void OpenMenu() {
+        public void OpenMenu()
+        {
             openMenu(root.children);
         }
 
-        public void CloseMenu() {
+        public void CloseMenu()
+        {
             disableAllButtons();
             canvas.gameObject.SetActive(false);
             highscore.gameObject.SetActive(false);
         }
 
-        internal void buttonClicked(string id) {
+        internal void buttonClicked(string id)
+        {
             if (menuItems.ContainsKey(id) && menuItems[id].children.Count > 0)
                 OpenMenu(id);
 
             UISystem.Instance.OnUIMenuButtonClicked(id);
         }
 
-        internal void submitButtonPressed() {
+        internal void submitButtonPressed()
+        {
             MenuButton active = getCurrentlySelectedButton();
             if (!active) return;
 
@@ -90,7 +107,8 @@ namespace Icaros.Mobile.UI {
                 active.OnClick();
         }
 
-        internal void selectNextButton() {
+        internal void selectNextButton()
+        {
             if (buttons.Length < 1 || !buttons[0].gameObject.activeSelf)
                 return;
             if (currentDisplay.Count < 2)
@@ -102,12 +120,16 @@ namespace Icaros.Mobile.UI {
             int currentButton = Array.FindIndex(buttons, b => b == active) + lowerPageLimit;
             currentButton++;
 
-            if (currentButton > upperPageLimit) {
-                if (currentButton == currentDisplay.Count) {
+            if (currentButton > upperPageLimit)
+            {
+                if (currentButton == currentDisplay.Count)
+                {
                     currentButton = 0;
                     lowerPageLimit = 0;
                     upperPageLimit = Mathf.Min(buttons.Length - 1, currentDisplay.Count - 1);
-                } else {
+                }
+                else
+                {
                     int shift = Mathf.Min(buttons.Length,
                                           currentDisplay.Count - currentButton);
 
@@ -117,11 +139,12 @@ namespace Icaros.Mobile.UI {
 
                 showShift();
             }
-            
+
             eventSystem.SetSelectedGameObject(buttons[currentButton - lowerPageLimit].gameObject);
         }
 
-        internal void selectPreviousButton() {
+        internal void selectPreviousButton()
+        {
             if (buttons.Length < 1 || !buttons[0].gameObject.activeSelf)
                 return;
             if (currentDisplay.Count < 2)
@@ -133,12 +156,16 @@ namespace Icaros.Mobile.UI {
             int currentButton = Array.FindIndex(buttons, b => b == active) + lowerPageLimit;
             currentButton--;
 
-            if (currentButton < lowerPageLimit) {
-                if (currentButton < 0) {
+            if (currentButton < lowerPageLimit)
+            {
+                if (currentButton < 0)
+                {
                     currentButton = currentDisplay.Count - 1;
                     upperPageLimit = currentDisplay.Count - 1;
                     lowerPageLimit = Mathf.Max(0, upperPageLimit - (buttons.Length - 1));
-                } else {
+                }
+                else
+                {
                     int shift = Mathf.Min(buttons.Length, currentButton + 1);
 
                     lowerPageLimit -= shift;
@@ -147,26 +174,30 @@ namespace Icaros.Mobile.UI {
 
                 showShift();
             }
-            
+
             eventSystem.SetSelectedGameObject(buttons[currentButton - lowerPageLimit].gameObject);
         }
 
-        private MenuButton getCurrentlySelectedButton() {
+        private MenuButton getCurrentlySelectedButton()
+        {
             GameObject currentObject = eventSystem.currentSelectedGameObject;
             if (!currentObject) return buttons[0];
             return currentObject.GetComponent<MenuButton>();
         }
-        
-        private void showShift() {
+
+        private void showShift()
+        {
             List<string> titlesToSync = new List<string>();
 
-            for (int i = 0; i < currentDisplay.Count && i < buttons.Length; i++) {
+            for (int i = 0; i < currentDisplay.Count && i < buttons.Length; i++)
+            {
                 string text = LocalizationManager.Get(currentDisplay[i + lowerPageLimit].title);
                 buttons[i].Refit(currentDisplay[i + lowerPageLimit].id, text);
                 titlesToSync.Add(text);
             }
 
-            if (titlesToSync.Count == 4) {
+            if (titlesToSync.Count == 4)
+            {
                 titlesToSync.Add("placeholder ScrollButton");
                 titlesToSync.Add("placeholder ScrollButton");
             }
@@ -174,13 +205,17 @@ namespace Icaros.Mobile.UI {
             UISystem.Instance.resyncButtons(titlesToSync);
         }
 
-        private void registerMenuItem(string id, string title, MenuItem parentItem, bool first) {
+        private void registerMenuItem(string id, string title, MenuItem parentItem, bool first)
+        {
             //this allows reusing of the same button in different menus
             //backToMainMenu for example
             MenuItem registered;
-            if (menuItems.ContainsKey(id)) {
+            if (menuItems.ContainsKey(id))
+            {
                 registered = menuItems[id];
-            } else {
+            }
+            else
+            {
                 registered = new MenuItem() { id = id, title = title };
                 menuItems.Add(id, registered);
             }
@@ -191,7 +226,8 @@ namespace Icaros.Mobile.UI {
                 parentItem.children.Add(registered);
         }
 
-        private void openMenu(List<MenuItem> toDisplay) {
+        private void openMenu(List<MenuItem> toDisplay)
+        {
             currentDisplay = toDisplay;
             lowerPageLimit = 0;
             upperPageLimit = Mathf.Min(toDisplay.Count - 1, buttons.Length - 1);
@@ -203,17 +239,21 @@ namespace Icaros.Mobile.UI {
             eventSystem.SetSelectedGameObject(buttons[0].gameObject);
         }
 
-        private void populateButtonPool(List<MenuItem> toDisplay) {
-            for (int i = 0; i < toDisplay.Count && i < buttons.Length; i++) {
+        private void populateButtonPool(List<MenuItem> toDisplay)
+        {
+            for (int i = 0; i < toDisplay.Count && i < buttons.Length; i++)
+            {
                 buttons[i].gameObject.SetActive(true);
             }
-            if (toDisplay.Count > buttons.Length) {
+            if (toDisplay.Count > buttons.Length)
+            {
                 foreach (GameObject g in scrollButtons)
                     g.SetActive(true);
             }
         }
-        
-        private void disableAllButtons() {
+
+        private void disableAllButtons()
+        {
             if (eventSystem != null)
                 eventSystem.SetSelectedGameObject(this.gameObject);
             foreach (MenuButton b in buttons)
@@ -222,7 +262,8 @@ namespace Icaros.Mobile.UI {
                 g.SetActive(false);
         }
 
-        private class MenuItem {
+        private class MenuItem
+        {
             public string id;
             public string title;
             public List<MenuItem> children = new List<MenuItem>();
@@ -230,19 +271,36 @@ namespace Icaros.Mobile.UI {
 
         #region Highscore
 
-        public void OpenHighscoreList()
+
+        public void ToggleHighscoreList()
         {
-            canvas.gameObject.SetActive(false);
-            highscore.gameObject.SetActive(true);
-           
-            
-            //highscoreList.text = "Sepp: 123 \nHubert: 10";
+            if (isHighscoreOpen) { CloseHighscoreList(); }
+            else { OpenHighscoreList(); }
         }
 
-        public void CloseHighscoreList()
+        public void OpenHighscoreList()
         {
-            canvas.gameObject.SetActive(true);
-            highscore.gameObject.SetActive(false);
+            if (!isHighscoreOpen)
+            {
+                canvas.gameObject.SetActive(false);
+                highscore.gameObject.SetActive(true);
+                backButtonHighscore.gameObject.SetActive(true);
+                isHighscoreOpen = true;
+            }
+        }
+
+        public int CloseHighscoreList()
+        {
+            if (isHighscoreOpen)
+            {
+                //canvas.gameObject.SetActive(true);
+                highscore.gameObject.SetActive(false);
+                backButtonHighscore.gameObject.SetActive(false);
+                OpenMenu();
+                isHighscoreOpen = false;
+                return 1;
+            }
+            return 0;
         }
 
         #endregion

@@ -36,6 +36,13 @@ namespace Icaros.Mobile.Player {
             UISystem.CloseUI();
             //In case we paused the game when we lost a previous controller
             Time.timeScale = 1;
+            StartCoroutine("CreateNewPlayer");
+            AtlentosManager.Instance.StartGameLogic();
+        }
+
+        private void CreateNewPlayer()
+        {
+            new LocalPlayer().InstantiateNewPlayer();
         }
 
         public void ControllerReconnecting(DeviceManager.reconnectingDeviceState state) {
