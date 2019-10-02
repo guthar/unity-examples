@@ -14,6 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 2
   RotationDelta: 20
+--- !u!64 &1345120333148153850
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3189094519417239598}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: fbb1810807a93534fbd814fb6b0aa55f, type: 3}
 --- !u!1 &6657374918700569820
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +215,12 @@ GameObject:
 --- !u!4 &3189094519417463818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: fbb1810807a93534fbd814fb6b0aa55f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3189094519417339528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3189094519417239598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100006, guid: fbb1810807a93534fbd814fb6b0aa55f,
     type: 3}
   m_PrefabInstance: {fileID: 3189094519417339528}
   m_PrefabAsset: {fileID: 0}
