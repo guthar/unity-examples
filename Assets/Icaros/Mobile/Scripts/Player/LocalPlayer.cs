@@ -18,6 +18,9 @@ namespace Icaros.Mobile.Player {
         public GameObject Head;
         public GameObject Vehicle;
 
+        public int BoostOverwater = 300;
+        public int BoostUnderwarter = 800;
+
         //Current Movementspeed
         public float MoveSpeed = 70f;
 
@@ -39,12 +42,21 @@ namespace Icaros.Mobile.Player {
                 return;
 
             myController = device;
-            //device.SecondButtonPressed += speedUp;
+            device.FirstButtonPressed += speedUpOverwater;
+            device.SecondButtonPressed += speedUpUnderwater;
             //device.ThirdButtonPressed += slowDown;
             device.xAxisRotated += rotateX;
             device.zAxisRotated += rotateZ;
 
             ready = true;
+        }
+
+        private void speedUpOverwater() {
+            if (!isUnderWater) { rb.AddForce(transform.forward * BoostOverwater); }
+        }
+
+        private void speedUpUnderwater() { 
+            if (isUnderWater) { rb.AddForce(transform.forward * BoostUnderwarter); }
         }
 
         public void recalibrate() {
