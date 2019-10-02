@@ -126,7 +126,7 @@ namespace Icaros.Mobile.Player {
             if (ready) {
                 // Unter Wasser
                 if (isUnderWater) {
-                    rb.AddForce(transform.forward * MoveSpeed);
+                    rb.AddForce(transform.forward * 70);
                 }
                 // Über Wasser
                 else {
@@ -149,8 +149,8 @@ namespace Icaros.Mobile.Player {
 
             try {
                 Head.transform.localRotation = camToFollow.localRotation;
-                Head.transform.localPosition = camToFollow.localPosition;
-                Vehicle.transform.position = camToFollow.transform.position;
+                //Head.transform.localPosition = camToFollow.localPosition;
+                //Vehicle.transform.position = camToFollow.transform.position;
             }
             catch (Exception e) {
                 camToFollow = null;

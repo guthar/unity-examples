@@ -56,7 +56,9 @@ MonoBehaviour:
   Camera: {fileID: 1985051121543606}
   Head: {fileID: 1672121619079694}
   Vehicle: {fileID: 1616280474392556}
-  MoveSpeed: 70
+  BoostOverwater: 300
+  BoostUnderwarter: 800
+  MoveSpeed: 0
   RollRotationFactor: 2
   PitchRotationFactor: 1.5
   jumpAudioClip: {fileID: 8300000, guid: a0b47ce1eafa13642886586021cf9ae9, type: 3}
