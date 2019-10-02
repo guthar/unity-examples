@@ -162,6 +162,8 @@ public class AtlentosManager : MonoBehaviour
     {
         // Spielstand zurücksetzen
         totalScore = 0f;
+        UpdateScoreboards();
+
         isPlaying = true;
         // Coroutinen starten
         StartCoroutine(nameof(weltspartagCoroutine));
@@ -179,6 +181,15 @@ public class AtlentosManager : MonoBehaviour
         }
     }
 
+    void UpdateScoreboards()
+    {
+        int score = (int)Math.Round(totalScore);
+        foreach (var board in FindObjectsOfType<ScoreBoard>())
+        {
+            board.UpdateScore(score);
+        }
+    }
+
     #region Ereignisse: Bank/Weltspartag
     /// <summary>
     /// Sammelt das Geldobjekt ein.
@@ -191,6 +202,7 @@ public class AtlentosManager : MonoBehaviour
     {
         // Spielstand übernehmen
         totalScore += moneyObjectProperties.ScoreValue;
+        UpdateScoreboards();
 
         // Geldobjekt zerstören
         destroyMoneyObject(moneyObject);
@@ -209,13 +221,13 @@ public class AtlentosManager : MonoBehaviour
         }
 
         // Wert übernehmen
-        totalScore += scoreValue;
         float interest = scoreValue * accountingInterest;
         if (isWeltspartag)
         {
             interest += (interest * weltspartagFactor);
         }
         totalScore += interest;
+        UpdateScoreboards();
     }
     #endregion
     #region Ereignisse: Wasserstand

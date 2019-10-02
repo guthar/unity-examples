@@ -12,6 +12,7 @@ namespace Icaros.Mobile.Player {
         private const string BankTag = "Bank";
         private const string FloodTag = "Flood";
         private const string DrainTag = "Drain";
+        private const string FishernetTag = "FisherNet";
 
         public GameObject Camera;
         public GameObject Head;
@@ -113,7 +114,7 @@ namespace Icaros.Mobile.Player {
             if (ready) {
                 // Unter Wasser
                 if (isUnderWater) {
-                    rb.AddForce(transform.forward * MoveSpeed * 80 * Time.deltaTime);
+                    rb.AddForce(transform.forward * MoveSpeed);
                 }
                 // Über Wasser
                 else {
@@ -167,6 +168,12 @@ namespace Icaros.Mobile.Player {
         /// </summary>
         [Tooltip("Ton, der abgespielt wird, wenn der Hecht in das Wasser eintaucht.")]
         public AudioClip diveAudioClip;
+
+        /// <summary>
+        /// Audio Clip, der beim Fangen des Hechtes abgespielt wird.
+        /// </summary>
+        [Tooltip("Ton, der abgespielt wird, wenn der Hecht im Netz landet.")]
+        public AudioClip catchAudioClip;
 
         /// <summary>
         /// Minimales Gewicht des Players.
@@ -225,7 +232,10 @@ namespace Icaros.Mobile.Player {
             {
                 isUnderWater = true;
                 rb.useGravity = false;
-                rb.drag = 0.7f;
+                rb.drag = 1f;
+
+                RenderSettings.fogColor = new Color(0, 0, 1f);
+                RenderSettings.fogStartDistance = 40f;
 
                 dive();
             }
@@ -247,6 +257,10 @@ namespace Icaros.Mobile.Player {
             {
                 atlentosManager.Drain();
             }
+            else if (isFisherNet(other.gameObject))
+            {
+                catchedByNet(other.gameObject);
+            }
         }
 
         /// <summary>
@@ -261,6 +275,8 @@ namespace Icaros.Mobile.Player {
                 isUnderWater = false;
                 rb.useGravity = true;
                 rb.drag = 0f;
+
+                RenderSettings.fogColor = new Color(1f, 1f, 1f);
 
                 jump();
             }
@@ -326,6 +342,20 @@ namespace Icaros.Mobile.Player {
         }
 
         /// <summary>
+        /// Bestimmt, ob es sich um das Fishernetz-Objekt handelt.
+        /// </summary>
+        /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
+        /// <returns>
+        /// <i>true</i> - Es handelt sich um das Fishernetz-Objekt.<br/>
+        /// <i>false</i> - Es handelt sich um ein anderes Objekt.
+        /// <returns></returns>
+        private bool isFisherNet(GameObject other)
+        {
+            bool result = other.CompareTag(FishernetTag);
+            return result;
+        }
+
+        /// <summary>
         /// Bestimmt, ob es sich um das Drainobjekt handelt.
         /// </summary>
         /// <param name="other">[in] Objekt, das bestimmt werden soll.</param>
@@ -337,6 +367,12 @@ namespace Icaros.Mobile.Player {
         {
             bool result = other.CompareTag(DrainTag);
             return result;
+        }
+
+        private void catchedByNet(GameObject netObject)
+        {
+            rb.AddForce(transform.forward * -1 * MoveSpeed * 80 * Time.deltaTime);
+            AudioSource.PlayClipAtPoint(catchAudioClip, gameObject.transform.position);
         }
 
         /// <summary>
@@ -370,7 +406,7 @@ namespace Icaros.Mobile.Player {
         private void accountCollectedMoney()
         {
             // einzahlen
-            atlentosManager.AccountMoney(currentScore);
+            atlentosManager.AccountMoney(currentScore, transform.position);
 
             // gesammeltes Geld und Gewicht zurücksetzen
             currentScore = 0;

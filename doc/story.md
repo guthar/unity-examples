@@ -9,7 +9,7 @@ Man sieht die Figur eigentlich nicht, blickt man jedoch zurück, sieht man die S
 
 ## Landschaft/Umgebung
 
-Man schwimmt unter Wasser in Linz rund um die Landstraße zwischen Volksgarten und Hauptplatz bzw. teilweise auch durch Hinterhöfe und Plätze. (-> Andi exportiert)
+Man schwimmt unter Wasser in Linz rund um die Landstraße zwischen Volksgarten und Hauptplatz bzw. teilweise auch durch Hinterhöfe und Plätze. (-> erledigt)
 Generell wird am Himmel immer die Sonne angezeigt, ggf. kann die Landschaft über Wasser der aktuellen Jahreszeit angepasst werden, wobei die Sunne immer sichtbar sein muss. (-> Sonne existiert)
 Auf der Landstraße wird die neue, moderne Bankfiliale dargestellt, zu der man das gesammelte Geld bringen muss. (-> offen)
 
@@ -17,26 +17,26 @@ Auf der Landstraße wird die neue, moderne Bankfiliale dargestellt, zu der man d
 
 ### Spielstart
 
-Der Start des Spiels erfolgt immer von der Position aus, bei der das vorige Spiel beendet wurde.
+Der Start des Spiels erfolgt immer von der Position aus, bei der das vorige Spiel beendet wurde. (-> immer vom Hauptplatz aus)
 
 ### Verlauf
 
 Man schwimmt unter Wasser in der Stadt herum auf der Suche nach Geld. (-> Schwimmen unter Wasser erledigt)
-Dieses Geld schwebt auf unterschiedlichen Niveaus, die teilweise unter Wasser, teilweise aber auch in der Luft sein können. (-> unterschiedliche Höhe noch offen)
+Dieses Geld schwebt auf unterschiedlichen Niveaus, die teilweise unter Wasser, teilweise aber auch in der Luft sein können. (-> erledigt)
 In der Luft schwebendes Geld kann man durch leuchtende Reflexionen unter Wasser erkennen. (-> variable Punkteberechnung erledigt)
 Unter Wasser kann Geld durch einfaches Durchschwimmen eingesammelt werden, über Wasser muss man versuchen dieses durch einen Sprung aus dem Wasser zu erwischen. (-> Sprung aus Wasser möglich, Collision mit Geldobjekten erledigt)
 Das Geld erscheint in bestimmten Intervallen an zufälligen Orten am Spielfeld und bleibt dort bestehen. (-> erledigt)
 
 ### Spielende
 
-Ist die definierte Spielzeit abgelaufen, wird das Spiel beendet. (-> offen)
+Ist die definierte Spielzeit abgelaufen, wird das Spiel beendet. (-> Zeit läuft, Spielende erledigt)
 
 ## Punkte
 
 Punkte können durch folgende Aktionen erreicht werden:
 * Einsammeln von Geld (unter bzw. über Wasser) (-> erledigt)
-* Bringen des eingesammelten Geldes zur Bank (Zinsen) (-> offen)
-* Bringen des eingesammelten Geldes zur Bank am Weltspartag (zusätzliche Zinsen) (-> offen)
+* Bringen des eingesammelten Geldes zur Bank (Zinsen) (-> erledigt)
+* Bringen des eingesammelten Geldes zur Bank am Weltspartag (zusätzliche Zinsen) (-> erledigt)
 
 Die aktuelle Punkteanzahl wird an mehreren Stellen in der Stadt auf Displays angezeigt (z.B. Passage). (-> offen)
 
@@ -47,7 +47,7 @@ Wie man die erzielten Punkte gegen reale Waren umtauschen kann, ist noch offen! 
 ### Weltspartag
 
 Die Sonne am Himmel strahlt immer, zu manchen Zeitpunkten wird in der Sonne ein Raiffeisen-Giebelkreuz angezeigt, welches den Weltspartag anzeigt. (-> erledigt)
-Wird das gesammelte Geld zu diesen Zeiten in der Bankstelle abgeliefert, erhält man nicht nur die Zinsen, sondern zusätzlich ein Power-up. (-> offen)
+Wird das gesammelte Geld zu diesen Zeiten in der Bankstelle abgeliefert, erhält man nicht nur die Zinsen, sondern zusätzlich ein Power-up. (-> gestrichen)
 
 #### Power-ups
 
@@ -85,7 +85,7 @@ Gesammeltes, jedoch nicht abgeliefertes Geld wird nach Spielende sofort wieder a
 
 ### Menü
 
-(-> offen)
+(-> erledigt)
 
 ### Schwierigkeitsgrade
 
@@ -94,7 +94,7 @@ Gesammeltes, jedoch nicht abgeliefertes Geld wird nach Spielende sofort wieder a
 ### Gewicht
 
 Je mehr Münzen man sammelt, desto schwerer wird man. Dadurch langsamer und man kann nicht mehr so hoch aus dem Wasser springen.
-Erst wenn man bei der Bank abliefert, wird man wieder leichter.
+Erst wenn man bei der Bank abliefert, wird man wieder leichter. (-> erledigt)
 
 ### Anleitung
 
@@ -113,6 +113,8 @@ Sprachausgabe zur Anleitung des Spiels.
   * Die Hälfte deiner Spielzeit ist nun verstrichen.
   * Noch 30 Sekunden bis zum Spielende.
   * Die Spielzeit ist zuende. Hecht geil, dass du gespielt hast!
+
+(-> erledigt)
 
 ### Sonstiges für Pitch
 
