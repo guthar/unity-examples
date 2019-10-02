@@ -549,7 +549,7 @@ public class AtlentosManager : MonoBehaviour {
 
             if (totalGameTime < secondsElapsed) {
                 isPlaying = false;
-                UIHighscoreList.AddScoreBoardEntry("Hackathon", totalScore);
+                UIHighscoreList.AddScoreBoardEntry("Hackathon", (int)Math.Round(totalScore));
                 UISystem.BackToMainMenu();
                 UIManager.Instance.ToggleHighscoreList();
                 GameFinished();
